@@ -4,6 +4,8 @@
 
 using namespace std;
 
+char MAIN_MENU_EXIT_KEY = 'e';
+
 /*
 These are function prototypes. 
 They have to match the function further down the page,
@@ -69,9 +71,19 @@ int rollDice(int numberOfDice, int sizeOfDice)
 
 int main() 
 {
-// This is the main file where we make stuff happen with functions!!
-
-generateDungeonRoom();
+	char input = 0;
+	
+	cout << "Welcome to Dungeon-ator!!!" << endl;
+	cout << endl;
+	do
+	{
+		printMenu();
+		cout << "Enter your menu choice: ";
+		cin >> input;
+		switch(input)
+		{
+		}
+	}while(input != MAIN_MENU_EXIT_KEY)
 
 return 0;
 }
