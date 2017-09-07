@@ -1,5 +1,5 @@
 #include <iostream>
-#include <time.h> // we need to include these for proper RNG
+#include <ctime> // we need to include these for proper RNG
 #include <random>
 
 using namespace std;
@@ -63,10 +63,16 @@ void generateDoorContents()
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
-{
-	// TODO: return random number.
-	cout << "I've generated a completely random number for your roll!" << endl;
-	return 4;
+{	
+	int rollTotal = 0;
+	default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
+	unfiorm_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
+	
+	for (int i = 0; i < numberOfDice; i++)
+	{
+		rollTotal += diceRoll(randomEngine);//calls the range and random engine seeded with time
+	}
+	return rollTotal;
 }
 
 int main() 
