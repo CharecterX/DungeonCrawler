@@ -1,12 +1,14 @@
 #include <iostream>
+#include <time.h> // we need to include these for proper RNG
+#include <random>
 
 using namespace std;
 
-printDungeon()//This function will print the dungeon to the screen with wither random attribuutes or attributes from the user.
+void printDungeon()//This function will print the dungeon to the screen with wither random attribuutes or attributes from the user.
 {
 	for(int i = 0; i < 100; i++)
 	{
-	cout << "Print 100 dungeons!"
+	cout << "Print 100 dungeons!";
 	}
 }
 
