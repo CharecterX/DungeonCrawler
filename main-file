@@ -14,5 +14,7 @@ int main()
 {
 // This is the main file where we make stuff happen with functions!!
 
+printDungeon();
+
 return 0;
 }
