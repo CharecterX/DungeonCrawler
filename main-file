@@ -4,19 +4,66 @@
 
 using namespace std;
 
-void printDungeon()//This function will print the dungeon to the screen with wither random attribuutes or attributes from the user.
+/*
+These are function prototypes. 
+They have to match the function further down the page,
+but they help the compiler keep code ordered.
+If you need to add a funtion, add a matching protype()
+*/
+
+void printMenu();
+void generateStartingArea();
+void generateDungeonRoom();
+void generateDungeonDoor();
+void generateDungeonPassage();
+void generatePassagewidth();
+void generateDoorContents();
+
+void printMenu()
 {
-	for(int i = 0; i < 100; i++)
-	{
-	cout << "Print 100 dungeons!";
-	}
+	cout << "Here's a menu with a bunch of cool options!" << endl;
+}
+
+/*
+These functions will generate random components
+ of a dungeon. (TODO: Random Attributes)
+ */
+void generateStartingArea()
+{
+	cout << "Here's the entrance of the dungeon!" << endl;
+}
+
+
+void generateDungeonRoom()
+{
+	cout << "Here's a room with random parameters!" << endl;
+}
+
+void generateDungeonDoor()
+{
+	cout << "Here's a door with some random features!" << endl;
+}
+
+void generateDungeonPassage()
+{
+	cout << "This is a random dungeon passage!" << endl;
+}
+
+void generatePassagewidth()
+{
+	cout << "This is a random passage width!" << endl;
+}
+
+void generateDoorContents()
+{
+	cout << "This is what's behind a door!" << endl;
 }
 
 int main() 
 {
 // This is the main file where we make stuff happen with functions!!
 
-printDungeon();
+generateDungeonRoom();
 
 return 0;
 }
