@@ -1,18 +1,22 @@
 #include <iostream>
+#include <time.h> // we need to include these for proper RNG
+#include <random>
 
 using namespace std;
 
+void printDungeon()//This function will print the dungeon to the screen with wither random attribuutes or attributes from the user.
+{
+	for(int i = 0; i < 100; i++)
+	{
+	cout << "Print 100 dungeons!";
+	}
+}
+
 int main() 
 {
+// This is the main file where we make stuff happen with functions!!
 
-cout << "Hello Alex!\n";
-cout << "I think i figured this GitHub thing out!\n";
-for(::)
-{
-	cout << You've been HaCkED1 << endl;
-}
-// btw I did this in notepad b/c I'm lazy.
-
+printDungeon();
 
 return 0;
 }
