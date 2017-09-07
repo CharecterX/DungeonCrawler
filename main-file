@@ -4,9 +4,14 @@ using namespace std;
 
 int main() 
 {
+
 cout << "Hello Alex!\n";
 cout << "I think i figured this GitHub thing out!\n";
-cout << "There is also a desktop app that we can look into so this doesnt have to be ntirely browser based!";
+for(::)
+{
+	cout << You've been HaCkED1 << endl;
+}
+// btw I did this in notepad b/c I'm lazy.
 
 
 return 0;
