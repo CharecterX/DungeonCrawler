@@ -18,6 +18,7 @@ void generateDungeonDoor();
 void generateDungeonPassage();
 void generatePassagewidth();
 void generateDoorContents();
+int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
 {
@@ -57,6 +58,13 @@ void generatePassagewidth()
 void generateDoorContents()
 {
 	cout << "This is what's behind a door!" << endl;
+}
+
+int rollDice(int numberOfDice, int sizeOfDice)
+{
+	// TODO: return random number.
+	cout << "I've generated a completely random number for your roll!" << endl;
+	return 4;
 }
 
 int main() 
