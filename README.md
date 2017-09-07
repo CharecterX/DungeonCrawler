@@ -1,2 +1,2 @@
 # DungeonCrawler
-A random dungeon genorator for me and my freind to colab on.
+A random dungeon generator for me and my friend to collaborate on.
