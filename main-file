@@ -18,10 +18,15 @@ If you need to add a funtion, add a matching protype()
 void printMenu();
 void generateStartingArea();
 void generateDungeonChamber();
+void chamberExitsNormal();
+void chamberExitsLarge();
+void chamberExitLocation();
+void chamberExitType();
 void generateDungeonDoor();
 void generateDungeonPassage();
 void generatePassageWidth();
 void generateDoorContents();
+void generateStairs();
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
@@ -124,6 +129,51 @@ void generateDungeonChamber()
 		break;
 	case 20:
 		cout << "Trapezoid, Roughly 40 x 60 ft. \n";
+		break;
+	}
+}
+
+void chamberExitsNormal()
+{
+ cout << "This will tell how many exits there are in a normal sized chamber";
+}
+
+void chamberExitsLarge()
+{
+	cout << "Thiss will tell how many exits there are in a large sized chamber";
+}	
+chamberExitLocation()
+{
+	cout << "This will tell where the exit(s) are located in the chamber";
+}
+chamberExitType()
+{
+	int exitTypeRoll = rollDice(1, 20)
+	switch (exitTypeRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+	case 10:
+		cout << "Door (roll on the doors table)\n";
+		break;
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+	case 19:
+	case 20:
+		cout << "corridor, 10 ft. long \n";
 		break;
 	}
 }
@@ -310,6 +360,11 @@ void generateDoorContents()
 		cout << "False door with trap \n";
 		break;
 	}
+}
+
+void generateStairs()
+{
+	cout << "This will generate some stairs with random attributes";
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
