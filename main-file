@@ -17,7 +17,7 @@ If you need to add a funtion, add a matching protype()
 
 void printMenu();
 void generateStartingArea();
-void generateDungeonRoom();
+void generateDungeonChamber();
 void generateDungeonDoor();
 void generateDungeonPassage();
 void generatePassageWidth();
@@ -27,7 +27,7 @@ int rollDice(int numberOfDice, int sizeOfDice);
 void printMenu()
 {
 	cout << "1.) Generate a starting area." << endl;
-	cout << "2.) Generate a single room." << endl;
+	cout << "2.) Generate a single chamber." << endl;
 	cout << "3.) Generate a passage." << endl;
 	cout << "4.) Generate a door." << endl;
 	cout << "5.) Exit" << endl;
@@ -76,14 +76,57 @@ void generateStartingArea()
 }
 
 
-void generateDungeonRoom()
+void generateDungeonChamber()
 {
-	cout << "Here's a room with random parameters!" << endl;
+	cout << "Here's a chamber with random parameters!" << endl;
 }
 
 void generateDungeonDoor()
 {
-	cout << "Here's a door with some random features!" << endl;
+	int doorRoll = rollDice(1, 20);
+	switch (doorRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+	case 10:
+		cout << "Wooden \n";
+		break;
+	case 11:
+	case 12:
+		cout << "Wooden, barred or locked \n";
+		break;
+	case 13:
+		cout << "Stone  \n";
+		break;
+	case 14:
+		cout << "Stone, barred or locked \n";
+		break;
+	case 15:
+		cout << "Iron \n";
+		break;
+	case 16:
+		cout << "Iron, barred or locked \n";
+		break;
+	case 17:
+		cout << "Portcullis \n";
+		break;
+	case 18:
+		cout << "Portcullis, locked in place \n";
+		break;
+	case 19:
+		cout << "Secret door \n";
+		break;
+	case 20:
+		cout << "Secret door, barred or locked \n";
+		break;
+	}
 }
 
 void generateDungeonPassage()
@@ -184,7 +227,42 @@ void generatePassageWidth()
 
 void generateDoorContents()
 {
-	cout << "This is what's behind a door!" << endl;
+	int doorContentsRoll = rollDice(1, 20);
+	switch (doorContentsRoll)
+	{
+	case 1:
+	case 2:
+		cout << "Passage extending 10 ft., the T intersection extending 10 ft. to the right left. \n";
+		generatePassageWidth();
+		break;
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+		cout << "Passage 20 ft. straight ahead. /n";
+		generatePassageWidth();
+		break;
+	case 9:
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+		cout << "Chamber (Roll on the chamber table) \n";
+		break;
+	case 19:
+		cout << "Stairs (Roll on the Stairs table) \n";
+		break;
+	case 20:
+		cout << "False door with trap \n";
+		break;
+	}
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
@@ -219,7 +297,7 @@ int main()
 		{
 		case '1': generateStartingArea();
 			break;
-		case '2': generateDungeonRoom();
+		case '2': generateDungeonChamber();
 			break;
 		case '3': generateDungeonPassage();
 			break;
