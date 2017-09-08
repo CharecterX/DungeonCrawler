@@ -1,10 +1,12 @@
 #include <iostream>
 #include <ctime> // we need to include these for proper RNG
 #include <random>
+#include <string>
+#include <array>
 
 using namespace std;
 
-char MAIN_MENU_EXIT_KEY = 'e';
+const char MAIN_MENU_EXIT_KEY = 'e';
 
 /*
 These are function prototypes. 
@@ -33,7 +35,40 @@ These functions will generate random components
  */
 void generateStartingArea()
 {
-	cout << "Here's the entrance of the dungeon!" << endl;
+	int startingAreaRoll = rollDice(1, 10);
+	switch(startingAreaRoll)
+	{
+	case 1:
+		cout << "Square, 20 x 20ft.; passage on each wall\n";
+		break;
+	case 2:
+		cout << "Square, 20 x 20ft.; door on two walls, passage in third wall\n";
+		break;
+	case 3:
+		cout << "Square, 40 x 40ft.; doors on three walls\n";
+		break;
+	case 4:
+		cout << "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall\n";
+		break;
+	case 5:
+		cout << "Rectangle, 20 x 40 ft.; Passage on each wall\n";
+		break;
+	case 6:
+		cout << "Circle, 40 ft. diameter; one passage at each cardinal direction\n";
+		break;
+	case 7:
+		cout << "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)\n";
+		break;
+	case 8:
+		cout << "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall\n";
+		break;
+	case 9:
+		cout << "Passage, 10 ft. wide; T intersection\n";
+		break;
+	case 10:
+		cout << "Passage, 10 ft. wide; four way intersection\n";
+		break;
+	}
 }
 
 
@@ -49,12 +84,97 @@ void generateDungeonDoor()
 
 void generateDungeonPassage()
 {
-	cout << "This is a random dungeon passage!" << endl;
+	int passageRoll = rollDice(1, 20);
+	switch (passageRoll)
+	{
+	case 1:
+	case 2:
+		cout << "Continue straight 30 ft., no doors or side passages.\n";
+		break;
+	case 3:
+		cout << "Continue straight 20 ft., door to the right, then an additional 10 ft. ahead\n";
+		break;
+	case 4:
+		cout << "Continue straight 20 ft., door to the right, then an additional 10 ft. ahead\n";
+		break;
+	case 5:
+		cout << "Continue straight 20 ft., passage ends in a door\n";
+		break;
+	case 6:
+	case 7:
+		cout << "Continue straight 20 ft., side passge to the right then an addition 10 ft. ahead\n";
+		break;
+	case 8:
+	case 9:
+		cout << "Continue straight 20 ft., side passge to the left then an addition 10 ft. ahead\n";
+		break;
+	case 10:
+		cout << "Continue straight 20 ft., comes to a dead end, 10 percent chance of secret door\n";
+		break;
+	case 11:
+	case 12:
+		cout << "Continue straight 20 ft., then the passage turns left and continues 10 ft.\n";
+		break;
+	case 13:
+	case 14:
+		cout << "Continue straight 20 ft., then the passage turns right and continues 10 ft.\n"
+		break;
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+	case 19:
+		cout << "Chamber (Roll on the Chamber Table)\n";
+		break;
+	case 20:
+		cout << "Stairs (Roll on the Stairs Table)\n";
+		break;
+	}
+	
 }
 
-void generatePassagewidth()
+void generatePassageWidth()
 {
-	cout << "This is a random passage width!" << endl;
+	int passageWidthRoll = rollDice(1, 20);
+	switch (passageWidthRoll)
+	{
+	case 1:
+	case 2:
+		cout << "5 ft.\n";
+		break;
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+	case 10:
+	case 11:
+	case 12:
+		cout << "10 ft.\n";
+		break;
+	case 13:
+	case 14:
+		cout << "20 ft.\n";
+		break;
+	case 15:
+	case 16:
+		cout << "30 ft.\n";
+		break;
+	case 17:
+		cout << "40 ft. with a row of pillars down the middle\n";
+		break;
+	case 18:
+		cout << "40 ft. with double row of pillars\n";
+		break;
+	case 19:
+		cout << "40 ft. wide, 20 ft. high\n";
+		break;
+	case 20:
+		cout << "40 ft. wide, 20 ft. high, gallery 10 ft. above floor allows access to level above\n";
+		break;
+	}
 }
 
 void generateDoorContents()
@@ -65,7 +185,7 @@ void generateDoorContents()
 int rollDice(int numberOfDice, int sizeOfDice)
 {	
 	int rollTotal = 0;
-	default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
+	static default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
 	unfiorm_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
 	
 	for (int i = 0; i < numberOfDice; i++)
