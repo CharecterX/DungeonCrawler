@@ -83,7 +83,7 @@ void generateStartingArea()
 
 void generateDungeonChamber()
 {
-	int chamberRoll = rollDice(1, 20)
+	int chamberRoll = rollDice(1, 20);
 	switch (chamberRoll)
 	{
 	case 1:
@@ -135,20 +135,121 @@ void generateDungeonChamber()
 
 void chamberExitsNormal()
 {
- cout << "This will tell how many exits there are in a normal sized chamber";
+	int exitRoll = rollDice(1, 20);
+	switch (exitRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+		cout << "0 exits \n";
+		break;
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+	case 10:
+	case 11:
+		cout << "1 exit \n";
+		break;
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+		cout << "2 exits \n";
+		break;
+	case 16:
+	case 17:
+	case 18:
+		cout << "3 exits \n";
+		break;
+	case 19:
+	case 20:
+		cout << "4 exits \n";
+		break;
+	}
 }
 
 void chamberExitsLarge()
 {
-	cout << "Thiss will tell how many exits there are in a large sized chamber";
+	int exitRoll = rollDice(1, 20);
+	switch (exitRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+		cout << "0 exits \n";
+		break;
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+		cout << "1 exit \n";
+		break;
+	case 9:
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+		cout << "2 exits \n";
+		break;
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+		cout << "3 exits \n";
+		break;
+	case 18:
+		cout << "4 exits \n";
+		break;
+	case 19:
+		cout << "5 exits \n";
+		break;
+	case 20:
+		cout << "6 exits \n";
+		break;
+	}
 }	
-chamberExitLocation()
+ void chamberExitLocation()
 {
-	cout << "This will tell where the exit(s) are located in the chamber";
+	int exitLocationRoll = rollDice(1, 20);
+	switch (exitLocationRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+		cout << "Wall opposite entrance \n";
+		break;
+	case 8:
+	case 9:
+	case 10:
+	case 11:
+	case 12:
+		cout << "Wall left of entrance \n";
+		break;
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+		cout << "Wall right of entrance \n";
+		break;
+	case 18:
+	case 19:
+	case 20:
+		cout << "Same wall as entrance \n";
+		break;
+	}
 }
-chamberExitType()
+void chamberExitType()
 {
-	int exitTypeRoll = rollDice(1, 20)
+	int exitTypeRoll = rollDice(1, 20);
 	switch (exitTypeRoll)
 	{
 	case 1:
@@ -364,7 +465,59 @@ void generateDoorContents()
 
 void generateStairs()
 {
-	cout << "This will generate some stairs with random attributes";
+	int stairRoll = rollDice(1, 20);
+	switch (stairRoll)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		cout << "Down one level to a chamber \n";
+		break;
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+		cout << "Down one level to a passage 20 ft. long \n";
+		break;
+	case 9:
+		cout << "Down two levels to a chamber \n";
+		break;
+	case 10:
+		cout << "Down two level two a passage 20 ft. long \n";
+		break;
+	case 11:
+		cout << "Down three levels to a chamber \n";
+		break;
+	case 12:
+		cout << "Down three level to a passage 20 ft. long \n";
+		break;
+	case 13:
+		cout << "Up one level to a chamber \n";
+		break;
+	case 14:
+		cout << "Up one level to a passage 20 ft. long \n";
+		break;
+	case 15:
+		cout << "Up one level to a dead end \n";
+		break;
+	case 16:
+		cout << "Down one level to a dead end \n";
+		break;
+	case 17:
+		cout << "Chimmney up one level to a passage 20 ft. long \n";
+		break;
+	case 18:
+		cout << "Chimmney up two levels to a passage 20 ft. long \n";
+		break;
+	case 19:
+	        cout << "Shaft (with or without elevator) down one level to a chamber \n";
+		break;
+	case 20:
+		cout << "Shaft (with or without elevator) up one level to a chamber \n";
+		break;
+	}
+	
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
