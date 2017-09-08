@@ -78,7 +78,54 @@ void generateStartingArea()
 
 void generateDungeonChamber()
 {
-	cout << "Here's a chamber with random parameters!" << endl;
+	int chamberRoll = rollDice(1, 20)
+	switch (chamberRoll)
+	{
+	case 1:
+	case 2:
+		cout << "Square 20 x 20 ft. \n";
+		break;
+	case 3:
+	case 4:
+		cout << "Square 30 x 30 ft. \n";
+		break;
+	case 5:
+	case 6:
+		cout << "Square 40 x 40 ft. \n";
+		break;
+	case 7:
+	case 8:
+	case 9:
+		cout << "Rectangle 20 x 30 ft. \n";
+		break;
+	case 10:
+	case 11:
+	case 12:
+		cout << "Rectangle 30 x 40 ft. \n";
+		break;
+	case 13:
+	case 14:
+		cout << "Rectangle 40 x 50 ft. \n";
+		break;
+	case 15:
+		cout << "Rectangle 50 x 80 ft. \n";
+		break;
+	case 16:
+		cout << "Circle 30 ft. diameter \n";
+		break;
+	case 17:
+		cout << "Circle 50 ft. diameter \n";
+		break;
+	case 18:
+		cout << "Octogon 40 x 40 ft. \n";
+		break;
+	case 19:
+		cout << "Octogon 60 x 60 ft. \n";
+		break;
+	case 20:
+		cout << "Trapezoid, Roughly 40 x 60 ft. \n";
+		break;
+	}
 }
 
 void generateDungeonDoor()
