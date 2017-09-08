@@ -6,10 +6,10 @@
 
 using namespace std;
 
-const char MAIN_MENU_EXIT_KEY = 'e';
+const char MAIN_MENU_EXIT_KEY = '5';
 
 /*
-These are function prototypes. 
+These are function prototypes.
 They have to match the function further down the page,
 but they help the compiler keep code ordered.
 If you need to add a funtion, add a matching protype()
@@ -20,54 +20,58 @@ void generateStartingArea();
 void generateDungeonRoom();
 void generateDungeonDoor();
 void generateDungeonPassage();
-void generatePassagewidth();
+void generatePassageWidth();
 void generateDoorContents();
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
 {
-	cout << "Here's a menu with a bunch of cool options!" << endl;
+	cout << "1.) Generate a starting area." << endl;
+	cout << "2.) Generate a single room." << endl;
+	cout << "3.) Generate a passage." << endl;
+	cout << "4.) Generate a door." << endl;
+	cout << "5.) Exit" << endl;
 }
 
 /*
 These functions will generate random components
- of a dungeon.
- */
+of a dungeon.
+*/
 void generateStartingArea()
 {
 	int startingAreaRoll = rollDice(1, 10);
-	switch(startingAreaRoll)
+	switch (startingAreaRoll)
 	{
 	case 1:
-		cout << "Square, 20 x 20ft.; passage on each wall\n";
-		break;
+		cout << "Square, 20 x 20ft.; passage on each wall" << endl;
+			break;
 	case 2:
-		cout << "Square, 20 x 20ft.; door on two walls, passage in third wall\n";
-		break;
+		cout << "Square, 20 x 20ft.; door on two walls, passage in third wall" << endl;
+			break;
 	case 3:
-		cout << "Square, 40 x 40ft.; doors on three walls\n";
-		break;
+		cout << "Square, 40 x 40ft.; doors on three walls" << endl;
+			break;
 	case 4:
-		cout << "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall\n";
-		break;
+		cout << "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall" << endl;
+			break;
 	case 5:
-		cout << "Rectangle, 20 x 40 ft.; Passage on each wall\n";
-		break;
+		cout << "Rectangle, 20 x 40 ft.; Passage on each wall" << endl;
+			break;
 	case 6:
-		cout << "Circle, 40 ft. diameter; one passage at each cardinal direction\n";
-		break;
+		cout << "Circle, 40 ft. diameter; one passage at each cardinal direction" << endl;
+			break;
 	case 7:
-		cout << "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)\n";
-		break;
+		cout << "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)" << endl;
+			break;
 	case 8:
-		cout << "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall\n";
-		break;
+		cout << "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall" << endl;
+			break;
 	case 9:
-		cout << "Passage, 10 ft. wide; T intersection\n";
-		break;
+		cout << "Passage, 10 ft. wide; T intersection" << endl;
+			break;
 	case 10:
-		cout << "Passage, 10 ft. wide; four way intersection\n";
-		break;
+		cout << "Passage, 10 ft. wide; four way intersection" << endl;
+			break;
 	}
 }
 
@@ -84,53 +88,54 @@ void generateDungeonDoor()
 
 void generateDungeonPassage()
 {
+	generatePassageWidth();
 	int passageRoll = rollDice(1, 20);
 	switch (passageRoll)
 	{
 	case 1:
 	case 2:
-		cout << "continues straight 30 feet, with no doors or side passages.\n";
-		break;
+		cout << "continues straight 30 feet, with no doors or side passages." << endl;
+			break;
 	case 3:
-		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead.\n";
-		break;
+		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
+			break;
 	case 4:
-		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead.\n";
-		break;
+		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
+			break;
 	case 5:
-		cout << "continues straight 20 feet, passage ends in a door.\n";
-		break;
+		cout << "continues straight 20 feet, passage ends in a door." << endl;
+			break;
 	case 6:
 	case 7:
-		cout << "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead.\n";
-		break;
+		cout << "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead." << endl;
+			break;
 	case 8:
 	case 9:
-		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead.\n";
-		break;
+		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead." << endl;
+			break;
 	case 10:
-		cout << "continues straight 20 feet, comes to a dead end, with a 10 percent chance of secret door.\n";
-		break;
+		cout << "continues straight 20 feet, comes to a dead end, with a 10 percent chance of secret door." << endl;
+			break;
 	case 11:
 	case 12:
-		cout << "continues straight 20 feet, then the passage turns left and continuess 10 feet.\n";
-		break;
+		cout << "continues straight 20 feet, then the passage turns left and continuess 10 feet." << endl;
+			break;
 	case 13:
 	case 14:
-		cout << "continues straight 20 feet, then the passage turns right and continuess 10 feet.\n"
-		break;
+		cout << "continues straight 20 feet, then the passage turns right and continuess 10 feet." << endl;
+			break;
 	case 15:
 	case 16:
 	case 17:
 	case 18:
 	case 19:
-		cout << "Chamber (Roll on the Chamber Table)\n";
-		break;
+		cout << "Chamber (Roll on the Chamber Table)" << endl;
+			break;
 	case 20:
-		cout << "Stairs (Roll on the Stairs Table)\n";
-		break;
+		cout << "Stairs (Roll on the Stairs Table)" << endl;
+			break;
 	}
-	
+
 }
 
 void generatePassageWidth()
@@ -183,11 +188,11 @@ void generateDoorContents()
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
-{	
+{
 	int rollTotal = 0;
 	static default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
-	unfiorm_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
-	
+	uniform_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
+
 	for (int i = 0; i < numberOfDice; i++)
 	{
 		rollTotal += diceRoll(randomEngine);//calls the range and random engine seeded with time
@@ -195,10 +200,10 @@ int rollDice(int numberOfDice, int sizeOfDice)
 	return rollTotal;
 }
 
-int main() 
+int main()
 {
 	char input = 0;
-	
+
 	cout << "Welcome to Dungeon-ator!!!" << endl;
 	cout << endl;
 	do
@@ -206,10 +211,24 @@ int main()
 		printMenu();
 		cout << "Enter your menu choice: ";
 		cin >> input;
-		switch(input)
+		while (input < '1' || input > MAIN_MENU_EXIT_KEY)
 		{
-		}
-	}while(input != MAIN_MENU_EXIT_KEY)
 
-return 0;
+		}
+		switch (input)
+		{
+		case '1': generateStartingArea();
+			break;
+		case '2': generateDungeonRoom();
+			break;
+		case '3': generateDungeonPassage();
+			break;
+		case '4': generateDungeonDoor();
+			break;
+		case '5':
+			break;
+		}
+	} while (input != MAIN_MENU_EXIT_KEY);
+
+		return 0;
 }
