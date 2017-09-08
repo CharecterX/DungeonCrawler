@@ -31,7 +31,7 @@ void printMenu()
 
 /*
 These functions will generate random components
- of a dungeon. (TODO: Random Attributes)
+ of a dungeon.
  */
 void generateStartingArea()
 {
@@ -89,35 +89,35 @@ void generateDungeonPassage()
 	{
 	case 1:
 	case 2:
-		cout << "Continue straight 30 ft., no doors or side passages.\n";
+		cout << "continues straight 30 feet, with no doors or side passages.\n";
 		break;
 	case 3:
-		cout << "Continue straight 20 ft., door to the right, then an additional 10 ft. ahead\n";
+		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead.\n";
 		break;
 	case 4:
-		cout << "Continue straight 20 ft., door to the right, then an additional 10 ft. ahead\n";
+		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead.\n";
 		break;
 	case 5:
-		cout << "Continue straight 20 ft., passage ends in a door\n";
+		cout << "continues straight 20 feet, passage ends in a door.\n";
 		break;
 	case 6:
 	case 7:
-		cout << "Continue straight 20 ft., side passge to the right then an addition 10 ft. ahead\n";
+		cout << "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead.\n";
 		break;
 	case 8:
 	case 9:
-		cout << "Continue straight 20 ft., side passge to the left then an addition 10 ft. ahead\n";
+		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead.\n";
 		break;
 	case 10:
-		cout << "Continue straight 20 ft., comes to a dead end, 10 percent chance of secret door\n";
+		cout << "continues straight 20 feet, comes to a dead end, with a 10 percent chance of secret door.\n";
 		break;
 	case 11:
 	case 12:
-		cout << "Continue straight 20 ft., then the passage turns left and continues 10 ft.\n";
+		cout << "continues straight 20 feet, then the passage turns left and continuess 10 feet.\n";
 		break;
 	case 13:
 	case 14:
-		cout << "Continue straight 20 ft., then the passage turns right and continues 10 ft.\n"
+		cout << "continues straight 20 feet, then the passage turns right and continuess 10 feet.\n"
 		break;
 	case 15:
 	case 16:
@@ -140,7 +140,7 @@ void generatePassageWidth()
 	{
 	case 1:
 	case 2:
-		cout << "5 ft.\n";
+		cout << "The passage is 5 feet wide, and ";
 		break;
 	case 3:
 	case 4:
@@ -152,27 +152,27 @@ void generatePassageWidth()
 	case 10:
 	case 11:
 	case 12:
-		cout << "10 ft.\n";
+		cout << "The passage is 10 feet wide, and ";
 		break;
 	case 13:
 	case 14:
-		cout << "20 ft.\n";
+		cout << "The passage is 20 feet wide, and ";
 		break;
 	case 15:
 	case 16:
-		cout << "30 ft.\n";
+		cout << "The passage is 30 feet wide, and ";
 		break;
 	case 17:
-		cout << "40 ft. with a row of pillars down the middle\n";
+		cout << "The passage is 40 feet wide with a row of pillars down the middle, and ";
 		break;
 	case 18:
-		cout << "40 ft. with double row of pillars\n";
+		cout << "The passage is 40 feet wide with a double row of pillars, and ";
 		break;
 	case 19:
-		cout << "40 ft. wide, 20 ft. high\n";
+		cout << "The passage is 40 feet wide, 20 feet high, and ";
 		break;
 	case 20:
-		cout << "40 ft. wide, 20 ft. high, gallery 10 ft. above floor allows access to level above\n";
+		cout << "The passage is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
 		break;
 	}
 }
