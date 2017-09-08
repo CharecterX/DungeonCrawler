@@ -18,8 +18,8 @@ If you need to add a funtion, add a matching protype()
 void printMenu();
 void generateStartingArea();
 void generateDungeonChamber();
-void chamberExitsNormal();
-void chamberExitsLarge();
+int chamberExitsNormal();
+int chamberExitsLarge();
 void chamberExitLocation();
 void chamberExitType();
 void generateDungeonDoor();
@@ -49,91 +49,140 @@ void generateStartingArea()
 	{
 	case 1:
 		cout << "Square, 20 x 20ft.; passage on each wall" << endl;
-			break;
+		break;
 	case 2:
 		cout << "Square, 20 x 20ft.; door on two walls, passage in third wall" << endl;
-			break;
+		break;
 	case 3:
 		cout << "Square, 40 x 40ft.; doors on three walls" << endl;
-			break;
+		break;
 	case 4:
 		cout << "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall" << endl;
-			break;
+		break;
 	case 5:
 		cout << "Rectangle, 20 x 40 ft.; Passage on each wall" << endl;
-			break;
+		break;
 	case 6:
 		cout << "Circle, 40 ft. diameter; one passage at each cardinal direction" << endl;
-			break;
+		break;
 	case 7:
 		cout << "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)" << endl;
-			break;
+		break;
 	case 8:
 		cout << "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall" << endl;
-			break;
+		break;
 	case 9:
 		cout << "Passage, 10 ft. wide; T intersection" << endl;
-			break;
+		break;
 	case 10:
 		cout << "Passage, 10 ft. wide; four way intersection" << endl;
-			break;
+		break;
 	}
 }
 
-
 void generateDungeonChamber()
 {
+	int exitsNormal;
+	int exitsLarge;
 	int chamberRoll = rollDice(1, 20);
 	switch (chamberRoll)
 	{
 	case 1:
 	case 2:
+		exitsNormal = chamberExitsNormal();
 		cout << "Square 20 x 20 ft. \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 3:
 	case 4:
+		exitsNormal = chamberExitsNormal();
 		cout << "Square 30 x 30 ft. \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 5:
 	case 6:
+		exitsNormal = chamberExitsNormal();
 		cout << "Square 40 x 40 ft. \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 7:
 	case 8:
 	case 9:
+		exitsNormal = chamberExitsNormal();
 		cout << "Rectangle 20 x 30 ft. \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 10:
 	case 11:
 	case 12:
+		exitsNormal = chamberExitsNormal();
 		cout << "Rectangle 30 x 40 ft. \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 13:
 	case 14:
+		exitsLarge = chamberExitsLarge();
 		cout << "Rectangle 40 x 50 ft. \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 15:
+		exitsLarge = chamberExitsLarge();
 		cout << "Rectangle 50 x 80 ft. \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 16:
+		exitsNormal = chamberExitsNormal();
 		cout << "Circle 30 ft. diameter \n";
+		cout << "with " << exitsNormal;
+		if (exitsNormal == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 17:
+		exitsLarge = chamberExitsLarge();
 		cout << "Circle 50 ft. diameter \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 18:
+		exitsLarge = chamberExitsLarge();
 		cout << "Octogon 40 x 40 ft. \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 19:
+		exitsLarge = chamberExitsLarge();
 		cout << "Octogon 60 x 60 ft. \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	case 20:
+		exitsLarge = chamberExitsLarge();
 		cout << "Trapezoid, Roughly 40 x 60 ft. \n";
+		cout << "with " << exitsLarge;
+		if (exitsLarge == 1) { cout << " exit \n"; }
+		else { cout << " exits \n"; }
 		break;
 	}
 }
 
-void chamberExitsNormal()
+int chamberExitsNormal()
 {
 	int exitRoll = rollDice(1, 20);
 	switch (exitRoll)
@@ -143,7 +192,7 @@ void chamberExitsNormal()
 	case 3:
 	case 4:
 	case 5:
-		cout << "0 exits \n";
+		return 0;
 		break;
 	case 6:
 	case 7:
@@ -151,27 +200,27 @@ void chamberExitsNormal()
 	case 9:
 	case 10:
 	case 11:
-		cout << "1 exit \n";
+		return 1;
 		break;
 	case 12:
 	case 13:
 	case 14:
 	case 15:
-		cout << "2 exits \n";
+		return 2;
 		break;
 	case 16:
 	case 17:
 	case 18:
-		cout << "3 exits \n";
+		return 3;
 		break;
 	case 19:
 	case 20:
-		cout << "4 exits \n";
+		return 4;
 		break;
 	}
 }
 
-void chamberExitsLarge()
+int chamberExitsLarge()
 {
 	int exitRoll = rollDice(1, 20);
 	switch (exitRoll)
@@ -179,40 +228,41 @@ void chamberExitsLarge()
 	case 1:
 	case 2:
 	case 3:
-		cout << "0 exits \n";
+		return 0;
 		break;
 	case 4:
 	case 5:
 	case 6:
 	case 7:
 	case 8:
-		cout << "1 exit \n";
+		return 1;
 		break;
 	case 9:
 	case 10:
 	case 11:
 	case 12:
 	case 13:
-		cout << "2 exits \n";
+		return 2;
 		break;
 	case 14:
 	case 15:
 	case 16:
 	case 17:
-		cout << "3 exits \n";
+		return 3;
 		break;
 	case 18:
-		cout << "4 exits \n";
+		return 4;
 		break;
 	case 19:
-		cout << "5 exits \n";
+		return 5;
 		break;
 	case 20:
-		cout << "6 exits \n";
+		return 6;
 		break;
 	}
-}	
- void chamberExitLocation()
+}
+
+void chamberExitLocation()
 {
 	int exitLocationRoll = rollDice(1, 20);
 	switch (exitLocationRoll)
@@ -247,6 +297,7 @@ void chamberExitsLarge()
 		break;
 	}
 }
+
 void chamberExitType()
 {
 	int exitTypeRoll = rollDice(1, 20);
@@ -336,45 +387,45 @@ void generateDungeonPassage()
 	case 1:
 	case 2:
 		cout << "continues straight 30 feet, with no doors or side passages." << endl;
-			break;
+		break;
 	case 3:
 		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
-			break;
+		break;
 	case 4:
 		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
-			break;
+		break;
 	case 5:
 		cout << "continues straight 20 feet, passage ends in a door." << endl;
-			break;
+		break;
 	case 6:
 	case 7:
 		cout << "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead." << endl;
-			break;
+		break;
 	case 8:
 	case 9:
 		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead." << endl;
-			break;
+		break;
 	case 10:
 		cout << "continues straight 20 feet, comes to a dead end, with a 10 percent chance of secret door." << endl;
-			break;
+		break;
 	case 11:
 	case 12:
 		cout << "continues straight 20 feet, then the passage turns left and continuess 10 feet." << endl;
-			break;
+		break;
 	case 13:
 	case 14:
 		cout << "continues straight 20 feet, then the passage turns right and continuess 10 feet." << endl;
-			break;
+		break;
 	case 15:
 	case 16:
 	case 17:
 	case 18:
 	case 19:
 		cout << "Chamber (Roll on the Chamber Table)" << endl;
-			break;
+		break;
 	case 20:
 		cout << "Stairs (Roll on the Stairs Table)" << endl;
-			break;
+		break;
 	}
 
 }
@@ -511,13 +562,13 @@ void generateStairs()
 		cout << "Chimmney up two levels to a passage 20 ft. long \n";
 		break;
 	case 19:
-	        cout << "Shaft (with or without elevator) down one level to a chamber \n";
+		cout << "Shaft (with or without elevator) down one level to a chamber \n";
 		break;
 	case 20:
 		cout << "Shaft (with or without elevator) up one level to a chamber \n";
 		break;
 	}
-	
+
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
@@ -563,5 +614,5 @@ int main()
 		}
 	} while (input != MAIN_MENU_EXIT_KEY);
 
-		return 0;
+	return 0;
 }
