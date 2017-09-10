@@ -94,15 +94,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 3:
@@ -112,15 +114,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 5:
@@ -130,15 +134,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 7:
@@ -149,15 +155,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 10:
@@ -168,15 +176,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 13:
@@ -186,15 +196,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 15:
@@ -203,15 +215,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 16:
@@ -220,15 +234,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsNormal;
 		if (exitsNormal == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsNormal == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 17:
@@ -237,15 +253,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 18:
@@ -254,15 +272,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 19:
@@ -271,15 +291,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	case 20:
@@ -288,15 +310,17 @@ void generateDungeonChamber()
 		cout << "with " << exitsLarge;
 		if (exitsLarge == 1)
 		{
-			cout << " exit on the ";
+			chamberExitType();
+			cout << "on the ";
 			chamberExitLocation();
 		}
 		else if (exitsLarge == 0) { cout << " exits \n"; }
 		else
 		{
-			cout << " exits, one on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
-			cout << " and one on the "; chamberExitLocation();
+			cout << " exits, one"; chamberExitType();
+			cout << "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
+			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
 		}
 		break;
 	}
@@ -433,7 +457,7 @@ void chamberExitType()
 	case 8:
 	case 9:
 	case 10:
-		cout << "Door (roll on the doors table)\n";
+		generateDungeonDoor();
 		break;
 	case 11:
 	case 12:
@@ -445,7 +469,7 @@ void chamberExitType()
 	case 18:
 	case 19:
 	case 20:
-		cout << "corridor, 10 ft. long \n";
+		cout << " 10 ft. long corridor ";
 		break;
 	}
 }
@@ -465,35 +489,35 @@ void generateDungeonDoor()
 	case 8:
 	case 9:
 	case 10:
-		cout << "Wooden \n";
+		cout << " wooden door ";
 		break;
 	case 11:
 	case 12:
-		cout << "Wooden, barred or locked \n";
+		cout << " barred or locked wooden door ";
 		break;
 	case 13:
-		cout << "Stone  \n";
+		cout << " stone door ";
 		break;
 	case 14:
-		cout << "Stone, barred or locked \n";
+		cout << " barred or locked stone door ";
 		break;
 	case 15:
-		cout << "Iron \n";
+		cout << " iron door ";
 		break;
 	case 16:
-		cout << "Iron, barred or locked \n";
+		cout << " barred or locked iron door ";
 		break;
 	case 17:
-		cout << "Portcullis \n";
+		cout << " protcullis ";
 		break;
 	case 18:
-		cout << "Portcullis, locked in place \n";
+		cout << " locked portcullis ";
 		break;
 	case 19:
-		cout << "Secret door \n";
+		cout << " secret door ";
 		break;
 	case 20:
-		cout << "Secret door, barred or locked \n";
+		cout << " locked secret door ";
 		break;
 	}
 }
