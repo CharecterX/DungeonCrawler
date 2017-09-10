@@ -28,6 +28,7 @@ void generateDungeonPassage();
 void generatePassageWidth();
 void generateDoorContents();
 void generateStairs();
+void secretDoor();
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
@@ -539,13 +540,13 @@ void generateDungeonPassage()
 		cout << "continues straight 30 feet, with no doors or side passages." << endl;
 		break;
 	case 3:
-		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
+		cout << "continues straight 20 feet, with a"; generateDungeonDoor(); cout <<  "to the right, then an additional 10 feet ahead." << endl;
 		break;
 	case 4:
-		cout << "continues straight 20 feet, with a door to the right, then an additional 10 feet ahead." << endl;
+		cout << "continues straight 20 feet, with a"; generateDungeonDoor(); cout << "to the right, then an additional 10 feet ahead." << endl;
 		break;
 	case 5:
-		cout << "continues straight 20 feet, passage ends in a door." << endl;
+		cout << "continues straight 20 feet, passage ends in a"; generateDungeonDoor(); cout << endl;
 		break;
 	case 6:
 	case 7:
@@ -556,7 +557,7 @@ void generateDungeonPassage()
 		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead." << endl;
 		break;
 	case 10:
-		cout << "continues straight 20 feet, comes to a dead end, with a 10 percent chance of secret door." << endl;
+		cout << "continues straight 20 feet, comes to a dead end."; secretDoor(); cout << endl;
 		break;
 	case 11:
 	case 12:
@@ -719,6 +720,15 @@ void generateStairs()
 		break;
 	}
 
+}
+
+void secretDoor()
+{
+	int secretDoorRoll = rollDice(1, 100);
+	if (secretDoorRoll >= 90)
+	{
+		cout << " (There is a secret door)";
+	}
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
