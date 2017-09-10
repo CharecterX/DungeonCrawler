@@ -92,24 +92,54 @@ void generateDungeonChamber()
 		exitsNormal = chamberExitsNormal();
 		cout << "Square 20 x 20 ft. \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 3:
 	case 4:
 		exitsNormal = chamberExitsNormal();
 		cout << "Square 30 x 30 ft. \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 5:
 	case 6:
 		exitsNormal = chamberExitsNormal();
 		cout << "Square 40 x 40 ft. \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 7:
 	case 8:
@@ -117,8 +147,18 @@ void generateDungeonChamber()
 		exitsNormal = chamberExitsNormal();
 		cout << "Rectangle 20 x 30 ft. \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 10:
 	case 11:
@@ -126,58 +166,138 @@ void generateDungeonChamber()
 		exitsNormal = chamberExitsNormal();
 		cout << "Rectangle 30 x 40 ft. \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 13:
 	case 14:
 		exitsLarge = chamberExitsLarge();
 		cout << "Rectangle 40 x 50 ft. \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 15:
 		exitsLarge = chamberExitsLarge();
 		cout << "Rectangle 50 x 80 ft. \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 16:
 		exitsNormal = chamberExitsNormal();
 		cout << "Circle 30 ft. diameter \n";
 		cout << "with " << exitsNormal;
-		if (exitsNormal == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsNormal == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 17:
 		exitsLarge = chamberExitsLarge();
 		cout << "Circle 50 ft. diameter \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 18:
 		exitsLarge = chamberExitsLarge();
 		cout << "Octogon 40 x 40 ft. \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 19:
 		exitsLarge = chamberExitsLarge();
 		cout << "Octogon 60 x 60 ft. \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	case 20:
 		exitsLarge = chamberExitsLarge();
 		cout << "Trapezoid, Roughly 40 x 60 ft. \n";
 		cout << "with " << exitsLarge;
-		if (exitsLarge == 1) { cout << " exit \n"; }
-		else { cout << " exits \n"; }
+		if (exitsLarge == 1)
+		{
+			cout << " exit on the ";
+			chamberExitLocation();
+		}
+		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else
+		{
+			cout << " exits, one on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one on the "; chamberExitLocation(); }
+			cout << " and one on the "; chamberExitLocation();
+		}
 		break;
 	}
 }
@@ -274,26 +394,26 @@ void chamberExitLocation()
 	case 5:
 	case 6:
 	case 7:
-		cout << "Wall opposite entrance \n";
+		cout << "wall opposite the entrance \n";
 		break;
 	case 8:
 	case 9:
 	case 10:
 	case 11:
 	case 12:
-		cout << "Wall left of entrance \n";
+		cout << "wall left of the entrance \n";
 		break;
 	case 13:
 	case 14:
 	case 15:
 	case 16:
 	case 17:
-		cout << "Wall right of entrance \n";
+		cout << "wall right of the entrance \n";
 		break;
 	case 18:
 	case 19:
 	case 20:
-		cout << "Same wall as entrance \n";
+		cout << "same wall as the entrance \n";
 		break;
 	}
 }
