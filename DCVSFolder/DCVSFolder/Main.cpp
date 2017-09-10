@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const char MAIN_MENU_EXIT_KEY = '5';
+const char MAIN_MENU_EXIT_KEY = '6';
 
 /*
 These are function prototypes.
@@ -36,7 +36,8 @@ void printMenu()
 	cout << "2.) Generate a single chamber." << endl;
 	cout << "3.) Generate a passage." << endl;
 	cout << "4.) Generate door contents." << endl;
-	cout << "5.) Exit" << endl;
+	cout << "5.) Generate Stairs." << endl;
+	cout << "6.) Exit" << endl;
 }
 
 /*
@@ -639,7 +640,7 @@ void generateDoorContents()
 	case 6:
 	case 7:
 	case 8:
-		cout << "Passage 20 ft. straight ahead. /n";
+		cout << "Passage 20 ft. straight ahead. \n";
 		generatePassageWidth();
 		break;
 	case 9:
@@ -758,7 +759,9 @@ int main()
 			break;
 		case '4': generateDoorContents();
 			break;
-		case '5':
+		case '5': generateStairs();
+			break;
+		case '6':
 			break;
 		}
 	} while (input != MAIN_MENU_EXIT_KEY);
