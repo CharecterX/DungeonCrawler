@@ -23,12 +23,12 @@ int chamberExitsNormal();
 int chamberExitsLarge();
 void chamberExitLocation();
 void chamberExitType();
-void generateDungeonDoor();
+string generateDungeonDoor();
 void generateDungeonPassage();
 void generatePassageWidth();
 void generateDoorContents();
 void generateStairs();
-void secretDoor();
+string secretDoor();
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
@@ -54,13 +54,13 @@ void generateStartingArea()
 		cout << "Square, 20 x 20ft. with a passage on each wall" << endl;
 		break;
 	case 2:
-		cout << "Square, 20 x 20ft. with a"; generateDungeonDoor(); cout << "on the a wall, a"; generateDungeonDoor(); cout << " on another wall and a passage on a third wall" << endl;
+		cout << "Square, 20 x 20ft. with a" << generateDungeonDoor() << "on the a wall, a" << generateDungeonDoor() << " on another wall and a passage on a third wall" << endl;
 		break;
 	case 3:
-		cout << "Square, 40 x 40ft. with a"; generateDungeonDoor(); cout << "on a wall, a"; generateDungeonDoor(); cout << "on another wall, and a"; generateDungeonDoor(); cout << "on a third wall" << endl;
+		cout << "Square, 40 x 40ft. with a" << generateDungeonDoor() << "on a wall, a" << generateDungeonDoor() << "on another wall, and a" << generateDungeonDoor() << "on a third wall" << endl;
 		break;
 	case 4:
-		cout << "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a"; generateDungeonDoor(); cout << "on one short wall and a"; generateDungeonDoor(); cout << "one the other" << endl;
+		cout << "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" << generateDungeonDoor() << "on one short wall and a" << generateDungeonDoor() << "one the other" << endl;
 		break;
 	case 5:
 		cout << "Rectangle, 20 x 40 ft. with a passage on each wall" << endl;
@@ -72,7 +72,7 @@ void generateStartingArea()
 		cout << "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level)" << endl;
 		break;
 	case 8:
-		cout << "Square, 20 x 20 ft. with a"; generateDungeonDoor(); cout << "on one wall, a"; generateDungeonDoor(); cout << "on another wall, a passage on a third wall, and a secret door on the fourth wall" << endl;
+		cout << "Square, 20 x 20 ft. with a" << generateDungeonDoor() << "on one wall, a" << generateDungeonDoor() << "on another wall, a passage on a third wall, and a secret door on the fourth wall" << endl;
 		break;
 	case 9:
 		cout << "Passage, 10 ft. wide in a T intersection" << endl;
@@ -464,7 +464,7 @@ void chamberExitType()
 	case 8:
 	case 9:
 	case 10:
-		generateDungeonDoor();
+		cout << generateDungeonDoor();
 		break;
 	case 11:
 	case 12:
@@ -481,8 +481,9 @@ void chamberExitType()
 	}
 }
 
-void generateDungeonDoor()
+string generateDungeonDoor()
 {
+	string doorType;
 	int doorRoll = rollDice(1, 20);
 	switch (doorRoll)
 	{
@@ -496,37 +497,38 @@ void generateDungeonDoor()
 	case 8:
 	case 9:
 	case 10:
-		cout << " wooden door ";
+		doorType = " wooden door ";
 		break;
 	case 11:
 	case 12:
-		cout << " barred or locked wooden door ";
+		doorType = " barred or locked wooden door ";
 		break;
 	case 13:
-		cout << " stone door ";
+		doorType = " stone door ";
 		break;
 	case 14:
-		cout << " barred or locked stone door ";
+		doorType = " barred or locked stone door ";
 		break;
 	case 15:
-		cout << " iron door ";
+		doorType = " iron door ";
 		break;
 	case 16:
-		cout << " barred or locked iron door ";
+		doorType = " barred or locked iron door ";
 		break;
 	case 17:
-		cout << " protcullis ";
+		doorType = " protcullis ";
 		break;
 	case 18:
-		cout << " locked portcullis ";
+		doorType = " locked portcullis ";
 		break;
 	case 19:
-		cout << " secret door ";
+		doorType = " secret door ";
 		break;
 	case 20:
-		cout << " locked secret door ";
+		doorType = " locked secret door ";
 		break;
 	}
+	return doorType;
 }
 
 void generateDungeonPassage()
@@ -540,13 +542,13 @@ void generateDungeonPassage()
 		cout << "continues straight 30 feet, with no doors or side passages." << endl;
 		break;
 	case 3:
-		cout << "continues straight 20 feet, with a"; generateDungeonDoor(); cout <<  "to the right, then an additional 10 feet ahead." << endl;
+		cout << "continues straight 20 feet, with a" << generateDungeonDoor() <<  "to the right, then an additional 10 feet ahead." << endl;
 		break;
 	case 4:
-		cout << "continues straight 20 feet, with a"; generateDungeonDoor(); cout << "to the right, then an additional 10 feet ahead." << endl;
+		cout << "continues straight 20 feet, with a" << generateDungeonDoor() << "to the right, then an additional 10 feet ahead." << endl;
 		break;
 	case 5:
-		cout << "continues straight 20 feet, passage ends in a"; generateDungeonDoor(); cout << endl;
+		cout << "continues straight 20 feet, passage ends in a" << generateDungeonDoor() << endl;
 		break;
 	case 6:
 	case 7:
@@ -557,7 +559,7 @@ void generateDungeonPassage()
 		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead." << endl;
 		break;
 	case 10:
-		cout << "continues straight 20 feet, comes to a dead end."; secretDoor(); cout << endl;
+		cout << "continues straight 20 feet, comes to a dead end." << secretDoor() << endl;
 		break;
 	case 11:
 	case 12:
@@ -722,13 +724,15 @@ void generateStairs()
 
 }
 
-void secretDoor()
+string secretDoor()
 {
+	string str;
 	int secretDoorRoll = rollDice(1, 100);
 	if (secretDoorRoll >= 90)
 	{
-		cout << " (There is a secret door)";
+		str = " (There is a secret door)";
 	}
+	return str;
 }
 
 int rollDice(int numberOfDice, int sizeOfDice)
