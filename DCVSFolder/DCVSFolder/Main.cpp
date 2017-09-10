@@ -1,3 +1,4 @@
+// This comment was made by cole
 #include <iostream>
 #include <ctime>
 #include <random>
