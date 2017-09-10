@@ -51,34 +51,34 @@ void generateStartingArea()
 	switch (startingAreaRoll)
 	{
 	case 1:
-		cout << "Square, 20 x 20ft.; passage on each wall" << endl;
+		cout << "Square, 20 x 20ft. with a passage on each wall" << endl;
 		break;
 	case 2:
-		cout << "Square, 20 x 20ft.; door on two walls, passage in third wall" << endl;
+		cout << "Square, 20 x 20ft. with a"; generateDungeonDoor(); cout << "on the a wall, a"; generateDungeonDoor(); cout << " on another wall and a passage on a third wall" << endl;
 		break;
 	case 3:
-		cout << "Square, 40 x 40ft.; doors on three walls" << endl;
+		cout << "Square, 40 x 40ft. with a"; generateDungeonDoor(); cout << "on a wall, a"; generateDungeonDoor(); cout << "on another wall, and a"; generateDungeonDoor(); cout << "on a third wall" << endl;
 		break;
 	case 4:
-		cout << "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall" << endl;
+		cout << "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a"; generateDungeonDoor(); cout << "on one short wall and a"; generateDungeonDoor(); cout << "one the other" << endl;
 		break;
 	case 5:
-		cout << "Rectangle, 20 x 40 ft.; Passage on each wall" << endl;
+		cout << "Rectangle, 20 x 40 ft. with a passage on each wall" << endl;
 		break;
 	case 6:
-		cout << "Circle, 40 ft. diameter; one passage at each cardinal direction" << endl;
+		cout << "Circle, 40 ft. diameter with one passage at each cardinal direction" << endl;
 		break;
 	case 7:
-		cout << "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)" << endl;
+		cout << "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level)" << endl;
 		break;
 	case 8:
-		cout << "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall" << endl;
+		cout << "Square, 20 x 20 ft. with a"; generateDungeonDoor(); cout << "on one wall, a"; generateDungeonDoor(); cout << "on another wall, a passage on a third wall, and a secret door on the fourth wall" << endl;
 		break;
 	case 9:
-		cout << "Passage, 10 ft. wide; T intersection" << endl;
+		cout << "Passage, 10 ft. wide in a T intersection" << endl;
 		break;
 	case 10:
-		cout << "Passage, 10 ft. wide; four way intersection" << endl;
+		cout << "Passage, 10 ft. wide in a four way intersection" << endl;
 		break;
 	}
 }
