@@ -1,4 +1,4 @@
-// This comment was made by cole
+// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id finibus velit. Maecenas efficitur ligula sit amet diam aliquet, at.
 #include <iostream>
 #include <ctime>
 #include <random>
