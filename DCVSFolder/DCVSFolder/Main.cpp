@@ -9,7 +9,7 @@ using namespace std;
 
 const char MAIN_MENU_EXIT_KEY = '6';
 
-/*
+/* 
 These are function prototypes.
 They have to match the function further down the page,
 but they help the compiler keep code ordered.
@@ -590,7 +590,7 @@ void generatePassageWidth()
 	{
 	case 1:
 	case 2:
-		cout << "The passage is 5 feet wide, and ";
+		cout << "A passage that is 5 feet wide, and ";
 		break;
 	case 3:
 	case 4:
@@ -602,27 +602,27 @@ void generatePassageWidth()
 	case 10:
 	case 11:
 	case 12:
-		cout << "The passage is 10 feet wide, and ";
+		cout << "A passage that is 10 feet wide, and ";
 		break;
 	case 13:
 	case 14:
-		cout << "The passage is 20 feet wide, and ";
+		cout << "A passage that is 20 feet wide, and ";
 		break;
 	case 15:
 	case 16:
-		cout << "The passage is 30 feet wide, and ";
+		cout << "A passage that is 30 feet wide, and ";
 		break;
 	case 17:
-		cout << "The passage is 40 feet wide with a row of pillars down the middle, and ";
+		cout << "A passage that is 40 feet wide with a row of pillars down the middle, and ";
 		break;
 	case 18:
-		cout << "The passage is 40 feet wide with a double row of pillars, and ";
+		cout << "A passage that is 40 feet wide with a double row of pillars, and ";
 		break;
 	case 19:
-		cout << "The passage is 40 feet wide, 20 feet high, and ";
+		cout << "A passage that is 40 feet wide, 20 feet high, and ";
 		break;
 	case 20:
-		cout << "The passage is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
+		cout << "A passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
 		break;
 	}
 }
@@ -634,8 +634,9 @@ void generateDoorContents()
 	{
 	case 1:
 	case 2:
-		cout << "Passage extending 10 ft., the T intersection extending 10 ft. to the right left. \n";
 		generatePassageWidth();
+		cout << "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
+		
 		break;
 	case 3:
 	case 4:
@@ -643,8 +644,8 @@ void generateDoorContents()
 	case 6:
 	case 7:
 	case 8:
-		cout << "Passage 20 ft. straight ahead. \n";
 		generatePassageWidth();
+		cout << "extends 20 ft. straight ahead. \n";
 		break;
 	case 9:
 	case 10:
