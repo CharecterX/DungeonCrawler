@@ -328,6 +328,7 @@ void generateDungeonChamber()
 
 int chamberExitsNormal()
 {
+	int numberOfExits;
 	int exitRoll = rollDice(1, 20);
 	switch (exitRoll)
 	{
@@ -336,7 +337,7 @@ int chamberExitsNormal()
 	case 3:
 	case 4:
 	case 5:
-		return 0;
+		numberOfExits = 0;
 		break;
 	case 6:
 	case 7:
@@ -344,66 +345,69 @@ int chamberExitsNormal()
 	case 9:
 	case 10:
 	case 11:
-		return 1;
+		numberOfExits = 1;
 		break;
 	case 12:
 	case 13:
 	case 14:
 	case 15:
-		return 2;
+		numberOfExits = 2;
 		break;
 	case 16:
 	case 17:
 	case 18:
-		return 3;
+		numberOfExits = 3;
 		break;
 	case 19:
 	case 20:
-		return 4;
+		numberOfExits = 4;
 		break;
 	}
+	return numberOfExits;
 }
 
 int chamberExitsLarge()
 {
+	int numberOfExits;
 	int exitRoll = rollDice(1, 20);
 	switch (exitRoll)
 	{
 	case 1:
 	case 2:
 	case 3:
-		return 0;
+		numberOfExits = 0;
 		break;
 	case 4:
 	case 5:
 	case 6:
 	case 7:
 	case 8:
-		return 1;
+		numberOfExits = 1;
 		break;
 	case 9:
 	case 10:
 	case 11:
 	case 12:
 	case 13:
-		return 2;
+		numberOfExits = 2;
 		break;
 	case 14:
 	case 15:
 	case 16:
 	case 17:
-		return 3;
+		numberOfExits = 3;
 		break;
 	case 18:
-		return 4;
+		numberOfExits = 4;
 		break;
 	case 19:
-		return 5;
+		numberOfExits = 5;
 		break;
 	case 20:
-		return 6;
+		numberOfExits = 6;
 		break;
 	}
+	return numberOfExits;
 }
 
 void chamberExitLocation()
