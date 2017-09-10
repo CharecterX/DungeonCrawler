@@ -35,7 +35,7 @@ void printMenu()
 	cout << "1.) Generate a starting area." << endl;
 	cout << "2.) Generate a single chamber." << endl;
 	cout << "3.) Generate a passage." << endl;
-	cout << "4.) Generate a door." << endl;
+	cout << "4.) Generate door contents." << endl;
 	cout << "5.) Exit" << endl;
 }
 
@@ -756,7 +756,7 @@ int main()
 			break;
 		case '3': generateDungeonPassage();
 			break;
-		case '4': generateDungeonDoor();
+		case '4': generateDoorContents();
 			break;
 		case '5':
 			break;
