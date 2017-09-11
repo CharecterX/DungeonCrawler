@@ -1,9 +1,10 @@
-// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id finibus velit. Maecenas efficitur ligula sit amet diam aliquet, at.
+
 #include <iostream>
 #include <ctime>
 #include <random>
 #include <string>
 #include <array>
+#include "Door.cpp"
 
 using namespace std;
 
@@ -15,12 +16,64 @@ They have to match the function further down the page,
 but they help the compiler keep code ordered.
 If you need to add a funtion, add a matching protype()
 */
+/*
+class Door
+{
+private:
+	string material;
+	bool locked;
 
+public:
+	Door(string material = "wooden", bool locked = false)
+	{
+		setMaterial(material);
+		setLocked(locked);
+	}
+
+	void setLocked(bool lockedStatus)
+	{
+		locked = lockedStatus;
+	}
+
+	void setMaterial(string materialType)
+	{
+		material = materialType;
+	}
+
+	string getMaterial()
+	{
+		return material;
+	}
+
+	string getLocked()
+	{
+		if(locked)
+		{
+			return "locked ";
+		}
+		else
+		{
+			return " ";
+		}
+	}
+
+	bool isLocked()
+	{
+		return locked;
+	}
+
+	string toString()
+	{
+		return " " + getLocked() + getMaterial() + " door ";
+	}
+};
+*/
 void printMenu();
 string generateStartingArea();
 string generateDungeonChamber();
 int chamberExitsNormal();
 int chamberExitsLarge();
+<<<<<<< HEAD
 string chamberExitLocation(); 
 string chamberExitType();
 string generateDungeonDoor();
@@ -29,6 +82,15 @@ string generatePassageWidth();
 string generateDoorContents();
 string generateStairs();
 string secretDoor();
+=======
+void chamberExitLocation();
+void chamberExitType();
+Door generateDungeonDoor();
+void generateDungeonPassage();
+void generatePassageWidth();
+void generateDoorContents();
+void generateStairs();
+>>>>>>> ObjectTestBranch1
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
@@ -37,7 +99,11 @@ void printMenu()
 	cout << "2.) Generate a single chamber." << endl;
 	cout << "3.) Generate a passage." << endl;
 	cout << "4.) Generate door contents." << endl;
+<<<<<<< HEAD
 	cout << "5.) Generate Stairs." << endl;
+=======
+	cout << "5.) Generate a door." << endl;
+>>>>>>> ObjectTestBranch1
 	cout << "6.) Exit" << endl;
 }
 
@@ -423,7 +489,11 @@ string chamberExitType()
 	case 8:
 	case 9:
 	case 10:
+<<<<<<< HEAD
 		exit = generateDungeonDoor();
+=======
+		cout << generateDungeonDoor().toString();
+>>>>>>> ObjectTestBranch1
 		break;
 	case 11:
 	case 12:
@@ -441,9 +511,15 @@ string chamberExitType()
 	return exit;
 }
 
+<<<<<<< HEAD
 string generateDungeonDoor()
 {
 	string doorType;
+=======
+Door generateDungeonDoor()
+{
+	Door newDoor;
+>>>>>>> ObjectTestBranch1
 	int doorRoll = rollDice(1, 20);
 	switch (doorRoll)
 	{
@@ -457,6 +533,7 @@ string generateDungeonDoor()
 	case 8:
 	case 9:
 	case 10:
+<<<<<<< HEAD
 		doorType = " wooden door ";
 		break;
 	case 11:
@@ -489,6 +566,40 @@ string generateDungeonDoor()
 		break;
 	}
 	return doorType;
+=======
+		newDoor = Door();
+		break;
+	case 11:
+	case 12:
+		newDoor = Door("wooden", true);
+		break;
+	case 13:
+		newDoor = Door("stone", false);
+		break;
+	case 14:
+		newDoor = Door("stone", true);
+		break;
+	case 15:
+		newDoor = Door("iron", false);
+		break;
+	case 16:
+		newDoor = Door("iron", true);
+		break;
+	case 17:
+		newDoor = Door("portcullis", false);
+		break;
+	case 18:
+		newDoor = Door("portcullis", true);
+		break;
+	case 19:
+		newDoor = Door("secret", false);
+		break;
+	case 20:
+		newDoor = Door("secret", true);
+		break;
+	}
+	return newDoor;
+>>>>>>> ObjectTestBranch1
 }
 
 string generateDungeonPassage()
@@ -738,6 +849,11 @@ int main()
 			break;
 		case '5': cout << generateStairs();
 			break;
+<<<<<<< HEAD
+=======
+		case '5': generateDungeonDoor();
+			break;
+>>>>>>> ObjectTestBranch1
 		case '6':
 			break;
 		}
