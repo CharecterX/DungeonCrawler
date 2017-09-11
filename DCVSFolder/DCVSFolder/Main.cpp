@@ -44,7 +44,7 @@ string generateChamberExitLayout(int numExitsInChamber);
 
 /* Functions not in use */
 //string generateStairs();
-	/*
+/*
 string generateStairs()
 {
 	string stairs;
