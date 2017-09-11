@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const char MAIN_MENU_EXIT_KEY = '6';
+const char MAIN_MENU_EXIT_KEY = '5';
 
 /* 
 These are function prototypes.
@@ -16,81 +16,20 @@ They have to match the function further down the page,
 but they help the compiler keep code ordered.
 If you need to add a funtion, add a matching protype()
 */
-/*
-class Door
-{
-private:
-	string material;
-	bool locked;
 
-public:
-	Door(string material = "wooden", bool locked = false)
-	{
-		setMaterial(material);
-		setLocked(locked);
-	}
-
-	void setLocked(bool lockedStatus)
-	{
-		locked = lockedStatus;
-	}
-
-	void setMaterial(string materialType)
-	{
-		material = materialType;
-	}
-
-	string getMaterial()
-	{
-		return material;
-	}
-
-	string getLocked()
-	{
-		if(locked)
-		{
-			return "locked ";
-		}
-		else
-		{
-			return " ";
-		}
-	}
-
-	bool isLocked()
-	{
-		return locked;
-	}
-
-	string toString()
-	{
-		return " " + getLocked() + getMaterial() + " door ";
-	}
-};
-*/
 void printMenu();
 string generateStartingArea();
 string generateDungeonChamber();
-int chamberExitsNormal();
-int chamberExitsLarge();
-<<<<<<< HEAD
+int chamberExitsNormalSizedChamber();
+int chamberExitsLargeSizedChamber();
 string chamberExitLocation(); 
 string chamberExitType();
-string generateDungeonDoor();
 string generateDungeonPassage();
 string generatePassageWidth();
 string generateDoorContents();
 string generateStairs();
 string secretDoor();
-=======
-void chamberExitLocation();
-void chamberExitType();
-Door generateDungeonDoor();
-void generateDungeonPassage();
-void generatePassageWidth();
-void generateDoorContents();
-void generateStairs();
->>>>>>> ObjectTestBranch1
+string generateDungeonDoor();
 int rollDice(int numberOfDice, int sizeOfDice);
 
 void printMenu()
@@ -99,12 +38,7 @@ void printMenu()
 	cout << "2.) Generate a single chamber." << endl;
 	cout << "3.) Generate a passage." << endl;
 	cout << "4.) Generate door contents." << endl;
-<<<<<<< HEAD
-	cout << "5.) Generate Stairs." << endl;
-=======
-	cout << "5.) Generate a door." << endl;
->>>>>>> ObjectTestBranch1
-	cout << "6.) Exit" << endl;
+	cout << "5.) Exit" << endl;
 }
 
 /*
@@ -139,7 +73,7 @@ string generateStartingArea()
 		startingArea = "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level) \n";
 		break;
 	case 8:
-		startingArea = "Square, 20 x 20 ft. with a" + generateDungeonDoor() + "on one wall, a" + generateDungeonDoor() + "on another wall, a passage on a third wall, and a secret door on the fourth wall \n";
+		startingArea = "Square, 20 x 20 ft. with a " + generateDungeonDoor() + " on one wall, a" + generateDungeonDoor() + "on another wall, a passage on a third wall, and a secret door on the fourth wall \n";
 		break;
 	case 9:
 		startingArea = "Passage, 10 ft. wide in a T intersection \n";
@@ -154,196 +88,214 @@ string generateStartingArea()
 string generateDungeonChamber()
 {
 	string chamber;
-	int exitsNormal;
-	int exitsLarge;
+	int numExitsNormalChamber;
+	int numExitsLargeChamber;
 	int chamberRoll = rollDice(1, 20);
 	switch (chamberRoll)
 	{
 	case 1:
 	case 2:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Square 20 x 20 ft. \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Square 20 x 20 ft. \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		}
+		else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) {chamber += " exits \n"; }
 		else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 3:
 	case 4:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Square 30 x 30 ft. \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Square 30 x 30 ft. \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		}
+		else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 5:
 	case 6:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Square 40 x 40 ft. \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Square 40 x 40 ft. \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		}
+		else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 7:
 	case 8:
 	case 9:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Rectangle 20 x 30 ft. \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Rectangle 20 x 30 ft. \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		} else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsNormal == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 10:
 	case 11:
 	case 12:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Rectangle 30 x 40 ft. \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Rectangle 30 x 40 ft. \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0)
+		{ 
+			chamber += " exits \n"; 
+		} else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsNormal == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 13:
 	case 14:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Rectangle 40 x 50 ft. \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Rectangle 40 x 50 ft. \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0)
+		{ 
+			chamber += " exits \n"; 
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 15:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Rectangle 50 x 80 ft. \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Rectangle 50 x 80 ft. \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the "+ chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 16:
-		exitsNormal = chamberExitsNormal();
-		chamber = "Circle 30 ft. diameter \n with " + exitsNormal;
-		if (exitsNormal == 1)
+		numExitsNormalChamber = chamberExitsNormalSizedChamber();
+		chamber = "Circle 30 ft. diameter \n with " + numExitsNormalChamber;
+		if (numExitsNormalChamber == 0) 
+		{
+			chamber += " exits \n";
+		} else if (numExitsNormalChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsNormal == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsNormalChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 17:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Circle 50 ft. diameter \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Circle 50 ft. diameter \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0) 
+		{ 
+			chamber += " exits \n"; 
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 18:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Octogon 40 x 40 ft. \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Octogon 40 x 40 ft. \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0) 
+		{
+			chamber += " exits \n";
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 19:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Octogon 60 x 60 ft. \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Octogon 60 x 60 ft. \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0) 
+		{
+			chamber += " exits \n";
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 20:
-		exitsLarge = chamberExitsLarge();
-		chamber = "Trapezoid, Roughly 40 x 60 ft. \n with " + exitsLarge;
-		if (exitsLarge == 1)
+		numExitsLargeChamber = chamberExitsLargeSizedChamber();
+		chamber = "Trapezoid, Roughly 40 x 60 ft. \n with " + numExitsLargeChamber;
+		if (numExitsLargeChamber == 0)
+		{
+			chamber += " exits \n";
+		} else if (numExitsLargeChamber == 1)
 		{
 			chamber += chamberExitType() + "on the " + chamberExitLocation();
-		}
-		else if (exitsLarge == 0) { chamber += " exits \n"; }
-		else
+		} else
 		{
 			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			for (int i = 0; i < numExitsLargeChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
 			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
@@ -351,7 +303,7 @@ string generateDungeonChamber()
 	return chamber;
 }
 
-int chamberExitsNormal()
+int chamberExitsNormalSizedChamber()
 {
 	char numberOfExits;
 	int exitRoll = rollDice(1, 20);
@@ -391,7 +343,7 @@ int chamberExitsNormal()
 	return numberOfExits;
 }
 
-int chamberExitsLarge()
+int chamberExitsLargeSizedChamber()
 {
 	int numberOfExits;
 	int exitRoll = rollDice(1, 20);
@@ -489,11 +441,7 @@ string chamberExitType()
 	case 8:
 	case 9:
 	case 10:
-<<<<<<< HEAD
 		exit = generateDungeonDoor();
-=======
-		cout << generateDungeonDoor().toString();
->>>>>>> ObjectTestBranch1
 		break;
 	case 11:
 	case 12:
@@ -511,15 +459,9 @@ string chamberExitType()
 	return exit;
 }
 
-<<<<<<< HEAD
 string generateDungeonDoor()
 {
-	string doorType;
-=======
-Door generateDungeonDoor()
-{
 	Door newDoor;
->>>>>>> ObjectTestBranch1
 	int doorRoll = rollDice(1, 20);
 	switch (doorRoll)
 	{
@@ -533,40 +475,6 @@ Door generateDungeonDoor()
 	case 8:
 	case 9:
 	case 10:
-<<<<<<< HEAD
-		doorType = " wooden door ";
-		break;
-	case 11:
-	case 12:
-		doorType = " barred or locked wooden door ";
-		break;
-	case 13:
-		doorType = " stone door ";
-		break;
-	case 14:
-		doorType = " barred or locked stone door ";
-		break;
-	case 15:
-		doorType = " iron door ";
-		break;
-	case 16:
-		doorType = " barred or locked iron door ";
-		break;
-	case 17:
-		doorType = " protcullis ";
-		break;
-	case 18:
-		doorType = " locked portcullis ";
-		break;
-	case 19:
-		doorType = " secret door ";
-		break;
-	case 20:
-		doorType = " locked secret door ";
-		break;
-	}
-	return doorType;
-=======
 		newDoor = Door();
 		break;
 	case 11:
@@ -598,8 +506,7 @@ Door generateDungeonDoor()
 		newDoor = Door("secret", true);
 		break;
 	}
-	return newDoor;
->>>>>>> ObjectTestBranch1
+	return newDoor.toString();
 }
 
 string generateDungeonPassage()
@@ -847,14 +754,7 @@ int main()
 			break;
 		case '4': cout << generateDoorContents();
 			break;
-		case '5': cout << generateStairs();
-			break;
-<<<<<<< HEAD
-=======
-		case '5': generateDungeonDoor();
-			break;
->>>>>>> ObjectTestBranch1
-		case '6':
+		case '5':
 			break;
 		}
 	} while (input != MAIN_MENU_EXIT_KEY);
