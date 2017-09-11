@@ -128,34 +128,34 @@ string generateStartingArea()
 	switch (startingAreaRoll)
 	{
 	case 1:
-		startingArea = "Square, 20 x 20ft. with a passage on each wall \n";
+		startingArea = "\n\tSquare, 20 x 20ft. with a passage on each wall \n\n";
 		break;
 	case 2:
-		startingArea = "Square, 20 x 20ft. with a" + generateDungeonDoor() + "on the a wall, a" + generateDungeonDoor() + " on another wall and a passage on a third wall \n";
+		startingArea = "\n\tSquare, 20 x 20ft. with a" + generateDungeonDoor() + "on the a wall, a" + generateDungeonDoor() + " on another wall and a passage on a third wall \n\n";
 		break;
 	case 3:
-		startingArea = "Square, 40 x 40ft. with a" + generateDungeonDoor() + "on a wall, a" + generateDungeonDoor() + "on another wall, and a" + generateDungeonDoor() + "on a third wall \n";
+		startingArea = "\n\tSquare, 40 x 40ft. with a" + generateDungeonDoor() + "on a wall, a" + generateDungeonDoor() + "on another wall, and a" + generateDungeonDoor() + "on a third wall \n\n";
 		break;
 	case 4:
-		startingArea = "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" + generateDungeonDoor() + "on one short wall and a" + generateDungeonDoor() + "one the other \n";
+		startingArea = "\n\tRectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" + generateDungeonDoor() + "on one short wall and a" + generateDungeonDoor() + "one the other \n\n";
 		break;
 	case 5:
-		startingArea = "Rectangle, 20 x 40 ft. with a passage on each wall \n";
+		startingArea = "\n\tRectangle, 20 x 40 ft. with a passage on each wall \n\n";
 		break;
 	case 6:
-		startingArea = "Circle, 40 ft. diameter with one passage at each cardinal direction \n";
+		startingArea = "\n\tCircle, 40 ft. diameter with one passage at each cardinal direction \n\n";
 		break;
 	case 7:
-		startingArea = "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level) \n";
+		startingArea = "\n\tCircle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level) \n\n";
 		break;
 	case 8:
-		startingArea = "Square, 20 x 20 ft. with a " + generateDungeonDoor() + " on one wall, a" + generateDungeonDoor() + "on another wall, a passage on a third wall, and a secret door on the fourth wall \n";
+		startingArea = "\n\tSquare, 20 x 20 ft. with a " + generateDungeonDoor() + " on one wall, a" + generateDungeonDoor() + "on another wall, a passage on a third wall, and a secret door on the fourth wall \n\n";
 		break;
 	case 9:
-		startingArea = "Passage, 10 ft. wide in a T intersection \n";
+		startingArea = "\n\tPassage, 10 ft. wide in a T intersection \n\n";
 		break;
 	case 10:
-		startingArea = "Passage, 10 ft. wide in a four way intersection \n";
+		startingArea = "Passage, 10 ft. wide in a four way intersection \n\n";
 		break;
 	}
 	return startingArea;
@@ -164,7 +164,7 @@ string generateStartingArea()
 string generateDungeonChamber()
 {
 	string chamber;
-	int chamberRoll = rollDice(1, 2);
+	int chamberRoll = rollDice(1, 20);
 	switch (chamberRoll)
 	{
 	case 1: case 2:
@@ -232,37 +232,37 @@ string generateDungeonPassage()
 	switch (passageRoll)
 	{
 	case 1: case 2:
-		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n";
+		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n\n";
 		break;
 	case 3:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n\n";
 		break;
 	case 4:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n\n";
 		break;
 	case 5:
-		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n";
+		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n\n";
 		break;
 	case 6: case 7:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n\n";
 		break;
 	case 8: case 9:
-		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n\n";
 		break;
 	case 10:
-		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n";
+		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n\n";
 		break;
 	case 11: case 12:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n\n";
 		break;
 	case 13: case 14:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n";
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n\n";
 		break;
 	case 15: case 16: case 17: case 18: case 19:
-		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n";
+		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n\n";
 		break;
 	case 20:
-		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n";
+		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n\n";
 		break;
 	}
 	return passage;
@@ -275,19 +275,19 @@ string generateDoorContents()
 	switch (doorContentsRoll)
 	{
 	case 1: case 2:
-		doorContents = generatePassageWidth() + "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
+		doorContents = generatePassageWidth() + "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n\n";
 		break;
 	case 3: case 4: case 5: case 6: case 7: case 8:
-		doorContents = generatePassageWidth() + "extends 20 ft. straight ahead. \n";
+		doorContents = generatePassageWidth() + "extends 20 ft. straight ahead. \n\n";
 		break;
 	case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18:
-		doorContents = "Chamber (Roll on the chamber table) \n";
+		doorContents = "\n\tChamber (Roll on the chamber table) \n\n";
 		break;
 	case 19:
-		doorContents = "Stairs (Roll on the Stairs table) \n";
+		doorContents = "\n\tStairs (Roll on the Stairs table) \n\n";
 		break;
 	case 20:
-		doorContents = "False door with trap \n";
+		doorContents = "\n\tFalse door with trap \n\n";
 		break;
 	}
 	return doorContents;
@@ -445,28 +445,28 @@ string generatePassageWidth()
 	switch (passageWidthRoll)
 	{
 	case 1: case 2:
-		passageWidth = "A passage that is 5 feet wide, and ";
+		passageWidth = "\n\tA passage that is 5 feet wide, and ";
 		break;
 	case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
-		passageWidth = "A passage that is 10 feet wide, and ";
+		passageWidth = "\n\tA passage that is 10 feet wide, and ";
 		break;
 	case 13: case 14:
-		passageWidth = "A passage that is 20 feet wide, and ";
+		passageWidth = "\n\tA passage that is 20 feet wide, and ";
 		break;
 	case 15: case 16:
-		passageWidth = "A passage that is 30 feet wide, and ";
+		passageWidth = "\n\tA passage that is 30 feet wide, and ";
 		break;
 	case 17:
-		passageWidth = "A passage that is 40 feet wide with a row of pillars down the middle, and ";
+		passageWidth = "\n\tA passage that is 40 feet wide with a row of pillars down the middle, and ";
 		break;
 	case 18:
-		passageWidth = "A passage that is 40 feet wide with a double row of pillars, and ";
+		passageWidth = "\n\tA passage that is 40 feet wide with a double row of pillars, and ";
 		break;
 	case 19:
-		passageWidth = "A passage that is 40 feet wide, 20 feet high, and ";
+		passageWidth = "\n\tA passage that is 40 feet wide, 20 feet high, and ";
 		break;
 	case 20:
-		passageWidth = "A passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
+		passageWidth = "\n\tA passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
 		break;
 	}
 	return passageWidth;
