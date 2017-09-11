@@ -1,3 +1,15 @@
+/*
+*
+*	Dungeon-ator V0.1
+*	A program to help DMs generate dungeons faster, based on
+*	the random dungeon tables in the
+*	Dungeons and Dragons Fifth Edition Dungeon Master's Guide
+*
+*	Authors: Cole Nordmann, Alex Abernathy
+*	Date: 09-2017
+*
+*/
+
 #include <string>
 
 using namespace std;

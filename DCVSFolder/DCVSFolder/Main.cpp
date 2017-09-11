@@ -1,3 +1,14 @@
+/*
+*
+*	Dungeon-ator V0.1
+*	A program to help DMs generate dungeons faster, based on
+*	the random dungeon tables in the 
+*	Dungeons and Dragons Fifth Edition Dungeon Master's Guide
+*
+*	Authors: Cole Nordmann, Alex Abernathy
+*	Date: 09-2017
+*
+*/
 
 #include <iostream>
 #include <ctime>
@@ -10,27 +21,82 @@ using namespace std;
 
 const char MAIN_MENU_EXIT_KEY = '5';
 
-/* 
-These are function prototypes.
-They have to match the function further down the page,
-but they help the compiler keep code ordered.
-If you need to add a funtion, add a matching protype()
-*/
 
+/*Core functions*/
 void printMenu();
+int rollDice(int numberOfDice, int sizeOfDice);
+
+/*Menu option functions*/
 string generateStartingArea();
 string generateDungeonChamber();
+string generateDungeonPassage();
+string generateDoorContents();
+
+/*Generator subroutines*/
+string chamberExitType();
+string chamberExitLocation(); 
 int chamberExitsNormalSizedChamber();
 int chamberExitsLargeSizedChamber();
-string chamberExitLocation(); 
-string chamberExitType();
-string generateDungeonPassage();
-string generatePassageWidth();
-string generateDoorContents();
-string generateStairs();
 string secretDoor();
 string generateDungeonDoor();
-int rollDice(int numberOfDice, int sizeOfDice);
+string generatePassageWidth();
+string generateChamberExitLayout(int numExitsInChamber);
+
+/* Functions not in use */
+//string generateStairs();
+	/*
+string generateStairs()
+{
+	string stairs;
+	int stairRoll = rollDice(1, 20);
+	switch (stairRoll)
+	{
+	case 1: case 2: case 3: case 4:
+		stairs = "Down one level to a chamber \n";
+		break;
+	case 5: case 6: case 7: case 8:
+		stairs = "Down one level to a passage 20 ft. long \n";
+		break;
+	case 9:
+		stairs = "Down two levels to a chamber \n";
+		break;
+	case 10:
+		stairs = "Down two level two a passage 20 ft. long \n";
+		break;
+	case 11:
+		stairs = "Down three levels to a chamber \n";
+		break;
+	case 12:
+		stairs = "Down three level to a passage 20 ft. long \n";
+		break;
+	case 13:
+		stairs = "Up one level to a chamber \n";
+		break;
+	case 14:
+		stairs = "Up one level to a passage 20 ft. long \n";
+		break;
+	case 15:
+		stairs = "Up one level to a dead end \n";
+		break;
+	case 16:
+		stairs = "Down one level to a dead end \n";
+		break;
+	case 17:
+		stairs = "Chimmney up one level to a passage 20 ft. long \n";
+		break;
+	case 18:
+		stairs = "Chimmney up two levels to a passage 20 ft. long \n";
+		break;
+	case 19:
+		stairs = "Shaft (with or without elevator) down one level to a chamber \n";
+		break;
+	case 20:
+		stairs = "Shaft (with or without elevator) up one level to a chamber \n";
+		break;
+	}
+	return stairs;
+}
+*/
 
 void printMenu()
 {
@@ -40,6 +106,19 @@ void printMenu()
 	cout << " 4.) Generate door contents." << endl;
 	cout << " 5.) Exit" << endl;
 	cout << endl;
+}
+
+int rollDice(int numberOfDice, int sizeOfDice)
+{
+	int rollTotal = 0;
+	static default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
+	uniform_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
+
+	for (int i = 0; i < numberOfDice; i++)
+	{
+		rollTotal += diceRoll(randomEngine);//calls the range and random engine seeded with time
+	}
+	return rollTotal;
 }
 
 string generateStartingArea()
@@ -82,29 +161,6 @@ string generateStartingArea()
 	return startingArea;
 }
 
-string generateChamberExitLayout(int numExitsInChamber)
-{
-	string chamber = to_string(numExitsInChamber);
-	if (numExitsInChamber == 0)
-	{
-		chamber += " exits \n";
-	}
-	else if (numExitsInChamber == 1)
-	{
-		chamber += chamberExitType() + "on the " + chamberExitLocation();
-	}
-	else
-	{
-		chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-		for (int i = 0; i < numExitsInChamber - 2; i++) 
-		{
-			chamber += "one" + chamberExitType() + "on the " + chamberExitLocation();
-		}
-		chamber += "and one" + chamberExitType() + "on the " + chamberExitLocation();
-	}
-	return chamber;
-}
-
 string generateDungeonChamber()
 {
 	string chamber;
@@ -116,19 +172,19 @@ string generateDungeonChamber()
 		/*
 		numExitsInChamber = chamberExitsNormalSizedChamber();
 		chamber = "Square 20 x 20 ft. \n with " + numExitsInChamber;
-		if (numExitsInChamber == 0) 
-		{ 
-			chamber += " exits \n"; 
+		if (numExitsInChamber == 0)
+		{
+		chamber += " exits \n";
 		}
 		else if (numExitsInChamber == 1)
 		{
-			chamber += chamberExitType() + "on the " + chamberExitLocation();
+		chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
 		else
 		{
-			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
-			for (int i = 0; i < numExitsInChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
-			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
+		chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+		for (int i = 0; i < numExitsInChamber - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+		chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		*/
 		break;
@@ -147,26 +203,132 @@ string generateDungeonChamber()
 	case 13: case 14:
 		chamber = "\n\tRectangle 40 x 50 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
 		break; case 15:
-		chamber = "\n\tRectangle 50 x 80 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
-		break;
-	case 16:
-		chamber = "\n\tCircle 30 ft. diameter \n\twith " + generateChamberExitLayout(chamberExitsNormalSizedChamber());
-		break;
-	case 17:
-		chamber = "\n\tCircle 50 ft. diameter \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
-		break;
-	case 18:
-		chamber = "\n\tOctagon 40 x 40 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
-		break;
-	case 19:
-		chamber = "\n\tOctogon 60 x 60 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
-		break;
-	case 20:
-		chamber = "\n\tTrapezoid, Roughly 40 x 60 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
-		break;
+			chamber = "\n\tRectangle 50 x 80 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
+			break;
+		case 16:
+			chamber = "\n\tCircle 30 ft. diameter \n\twith " + generateChamberExitLayout(chamberExitsNormalSizedChamber());
+			break;
+		case 17:
+			chamber = "\n\tCircle 50 ft. diameter \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
+			break;
+		case 18:
+			chamber = "\n\tOctagon 40 x 40 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
+			break;
+		case 19:
+			chamber = "\n\tOctogon 60 x 60 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
+			break;
+		case 20:
+			chamber = "\n\tTrapezoid, Roughly 40 x 60 ft. \n\twith " + generateChamberExitLayout(chamberExitsLargeSizedChamber());
+			break;
 	}
 	chamber += "\n";
 	return chamber;
+}
+
+string generateDungeonPassage()
+{
+	string passage;
+	int passageRoll = rollDice(1, 20);
+	switch (passageRoll)
+	{
+	case 1: case 2:
+		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n";
+		break;
+	case 3:
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n";
+		break;
+	case 4:
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n";
+		break;
+	case 5:
+		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n";
+		break;
+	case 6: case 7:
+		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n";
+		break;
+	case 8: case 9:
+		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n";
+		break;
+	case 10:
+		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n";
+		break;
+	case 11: case 12:
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n";
+		break;
+	case 13: case 14:
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n";
+		break;
+	case 15: case 16: case 17: case 18: case 19:
+		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n";
+		break;
+	case 20:
+		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n";
+		break;
+	}
+	return passage;
+}
+
+string generateDoorContents()
+{
+	string doorContents;
+	int doorContentsRoll = rollDice(1, 20);
+	switch (doorContentsRoll)
+	{
+	case 1: case 2:
+		doorContents = generatePassageWidth() + "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
+		break;
+	case 3: case 4: case 5: case 6: case 7: case 8:
+		doorContents = generatePassageWidth() + "extends 20 ft. straight ahead. \n";
+		break;
+	case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18:
+		doorContents = "Chamber (Roll on the chamber table) \n";
+		break;
+	case 19:
+		doorContents = "Stairs (Roll on the Stairs table) \n";
+		break;
+	case 20:
+		doorContents = "False door with trap \n";
+		break;
+	}
+	return doorContents;
+}
+
+string chamberExitType()
+{
+	string exit;
+	int exitTypeRoll = rollDice(1, 20);
+	switch (exitTypeRoll)
+	{
+	case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
+		exit = generateDungeonDoor();
+		break;
+	case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20:
+		exit = " 10 ft. long corridor ";
+		break;
+	}
+	return exit;
+}
+
+string chamberExitLocation()
+{
+	string exit;
+	int exitLocationRoll = rollDice(1, 20);
+	switch (exitLocationRoll)
+	{
+	case 1: case 2: case 3:	case 4:	case 5: case 6: case 7:
+		exit = "wall opposite the entrance \n\t";
+		break;
+	case 8: case 9: case 10: case 11: case 12:
+		exit = "wall left of the entrance \n\t";
+		break;
+	case 13: case 14: case 15: case 16: case 17:
+		exit = "wall right of the entrance \n\t";
+		break;
+	case 18: case 19: case 20:
+		exit = "same wall as the entrance \n\t";
+		break;
+	}
+	return exit;
 }
 
 int chamberExitsNormalSizedChamber()
@@ -225,42 +387,15 @@ int chamberExitsLargeSizedChamber()
 	return numberOfExits;
 }
 
-string chamberExitLocation()
+string secretDoor()
 {
-	string exit;
-	int exitLocationRoll = rollDice(1, 20);
-	switch (exitLocationRoll)
+	string str;
+	int secretDoorRoll = rollDice(1, 100);
+	if (secretDoorRoll >= 90)
 	{
-	case 1: case 2: case 3:	case 4:	case 5: case 6: case 7:
-		exit = "wall opposite the entrance \n\t";
-		break;
-	case 8: case 9: case 10: case 11: case 12:
-		exit =  "wall left of the entrance \n\t";
-		break;
-	case 13: case 14: case 15: case 16: case 17:
-		exit = "wall right of the entrance \n\t";
-		break;
-	case 18: case 19: case 20:
-		exit = "same wall as the entrance \n\t";
-		break;
+		str = " (There is a secret door)";
 	}
-	return exit;
-}
-
-string chamberExitType()
-{
-	string exit;
-	int exitTypeRoll = rollDice(1, 20);
-	switch (exitTypeRoll)
-	{
-	case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
-		exit = generateDungeonDoor();
-		break;
-	case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20:
-		exit = " 10 ft. long corridor ";
-		break;
-	}
-	return exit;
+	return str;
 }
 
 string generateDungeonDoor()
@@ -303,49 +438,6 @@ string generateDungeonDoor()
 	return newDoor.toString();
 }
 
-string generateDungeonPassage()
-{
-	string passage;
-	int passageRoll = rollDice(1, 20);
-	switch (passageRoll)
-	{
-	case 1: case 2:
-		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n";
-		break;
-	case 3:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() +  "to the right, then an additional 10 feet ahead. \n";
-		break;
-	case 4:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n";
-		break;
-	case 5:
-		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n";
-		break;
-	case 6: case 7:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n";
-		break;
-	case 8: case 9:
-		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n";
-		break;
-	case 10:
-		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n";
-		break;
-	case 11: case 12:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n";
-		break;
-	case 13: case 14:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n";
-		break;
-	case 15: case 16: case 17: case 18: case 19:
-		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n";
-		break;
-	case 20:
-		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n";
-		break;
-	}
-	return passage;
-}
-
 string generatePassageWidth()
 {
 	string passageWidth;
@@ -380,105 +472,27 @@ string generatePassageWidth()
 	return passageWidth;
 }
 
-string generateDoorContents()
+string generateChamberExitLayout(int numExitsInChamber)
 {
-	string doorContents;
-	int doorContentsRoll = rollDice(1, 20);
-	switch (doorContentsRoll)
+	string chamber = to_string(numExitsInChamber);
+	if (numExitsInChamber == 0)
 	{
-	case 1: case 2:
-		doorContents = generatePassageWidth() + "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
-		break;
-	case 3: case 4: case 5: case 6: case 7: case 8:
-		doorContents = generatePassageWidth() + "extends 20 ft. straight ahead. \n";
-		break;
-	case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18:
-		doorContents = "Chamber (Roll on the chamber table) \n";
-		break;
-	case 19:
-		doorContents = "Stairs (Roll on the Stairs table) \n";
-		break;
-	case 20:
-		doorContents = "False door with trap \n";
-		break;
+		chamber += " exits \n";
 	}
-	return doorContents;
-}
-
-string generateStairs()
-{
-	string stairs;
-	int stairRoll = rollDice(1, 20);
-	switch (stairRoll)
+	else if (numExitsInChamber == 1)
 	{
-	case 1: case 2: case 3: case 4:
-		stairs = "Down one level to a chamber \n";
-		break;
-	case 5: case 6: case 7: case 8:
-		stairs = "Down one level to a passage 20 ft. long \n";
-		break;
-	case 9:
-		stairs = "Down two levels to a chamber \n";
-		break;
-	case 10:
-		stairs = "Down two level two a passage 20 ft. long \n";
-		break;
-	case 11:
-		stairs = "Down three levels to a chamber \n";
-		break;
-	case 12:
-		stairs = "Down three level to a passage 20 ft. long \n";
-		break;
-	case 13:
-		stairs = "Up one level to a chamber \n";
-		break;
-	case 14:
-		stairs = "Up one level to a passage 20 ft. long \n";
-		break;
-	case 15:
-		stairs = "Up one level to a dead end \n";
-		break;
-	case 16:
-		stairs = "Down one level to a dead end \n";
-		break;
-	case 17:
-		stairs = "Chimmney up one level to a passage 20 ft. long \n";
-		break;
-	case 18:
-		stairs = "Chimmney up two levels to a passage 20 ft. long \n";
-		break;
-	case 19:
-		stairs = "Shaft (with or without elevator) down one level to a chamber \n";
-		break;
-	case 20:
-		stairs = "Shaft (with or without elevator) up one level to a chamber \n";
-		break;
+		chamber += chamberExitType() + "on the " + chamberExitLocation();
 	}
-	return stairs;
-}
-
-string secretDoor()
-{
-	string str;
-	int secretDoorRoll = rollDice(1, 100);
-	if (secretDoorRoll >= 90)
+	else
 	{
-		str = " (There is a secret door)";
+		chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+		for (int i = 0; i < numExitsInChamber - 2; i++)
+		{
+			chamber += "one" + chamberExitType() + "on the " + chamberExitLocation();
+		}
+		chamber += "and one" + chamberExitType() + "on the " + chamberExitLocation();
 	}
-	return str;
-}
-
-int rollDice(int numberOfDice, int sizeOfDice)
-{
-	int rollTotal = 0;
-	static default_random_engine randomEngine(time(0)); //crates the actual engine and seeds it with time.
-	uniform_int_distribution<int> diceRoll(1, sizeOfDice); //establishes a range
-
-	for (int i = 0; i < numberOfDice; i++)
-	{
-		rollTotal += diceRoll(randomEngine);//calls the range and random engine seeded with time
-	}
-	return rollTotal;
+	return chamber;
 }
 
 int main()
