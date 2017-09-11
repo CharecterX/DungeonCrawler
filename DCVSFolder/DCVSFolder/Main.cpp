@@ -17,17 +17,17 @@ If you need to add a funtion, add a matching protype()
 */
 
 void printMenu();
-void generateStartingArea();
-void generateDungeonChamber();
+string generateStartingArea();
+string generateDungeonChamber();
 int chamberExitsNormal();
 int chamberExitsLarge();
-void chamberExitLocation();
-void chamberExitType();
+string chamberExitLocation(); 
+string chamberExitType();
 string generateDungeonDoor();
-void generateDungeonPassage();
-void generatePassageWidth();
-void generateDoorContents();
-void generateStairs();
+string generateDungeonPassage();
+string generatePassageWidth();
+string generateDoorContents();
+string generateStairs();
 string secretDoor();
 int rollDice(int numberOfDice, int sizeOfDice);
 
@@ -45,46 +45,49 @@ void printMenu()
 These functions will generate random components
 of a dungeon.
 */
-void generateStartingArea()
+string generateStartingArea()
 {
+	string startingArea;
 	int startingAreaRoll = rollDice(1, 10);
 	switch (startingAreaRoll)
 	{
 	case 1:
-		cout << "Square, 20 x 20ft. with a passage on each wall" << endl;
+		startingArea = "Square, 20 x 20ft. with a passage on each wall \n";
 		break;
 	case 2:
-		cout << "Square, 20 x 20ft. with a" << generateDungeonDoor() << "on the a wall, a" << generateDungeonDoor() << " on another wall and a passage on a third wall" << endl;
+		startingArea = "Square, 20 x 20ft. with a" + generateDungeonDoor() + "on the a wall, a" + generateDungeonDoor() + " on another wall and a passage on a third wall \n";
 		break;
 	case 3:
-		cout << "Square, 40 x 40ft. with a" << generateDungeonDoor() << "on a wall, a" << generateDungeonDoor() << "on another wall, and a" << generateDungeonDoor() << "on a third wall" << endl;
+		startingArea = "Square, 40 x 40ft. with a" + generateDungeonDoor() + "on a wall, a" + generateDungeonDoor() + "on another wall, and a" + generateDungeonDoor() + "on a third wall \n";
 		break;
 	case 4:
-		cout << "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" << generateDungeonDoor() << "on one short wall and a" << generateDungeonDoor() << "one the other" << endl;
+		startingArea = "Rectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" + generateDungeonDoor() + "on one short wall and a" + generateDungeonDoor() + "one the other \n";
 		break;
 	case 5:
-		cout << "Rectangle, 20 x 40 ft. with a passage on each wall" << endl;
+		startingArea = "Rectangle, 20 x 40 ft. with a passage on each wall \n";
 		break;
 	case 6:
-		cout << "Circle, 40 ft. diameter with one passage at each cardinal direction" << endl;
+		startingArea = "Circle, 40 ft. diameter with one passage at each cardinal direction \n";
 		break;
 	case 7:
-		cout << "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level)" << endl;
+		startingArea = "Circle, 40 ft. diameter with one passage in each cardinal direction and a well in middle of room (might lead down to lower level) \n";
 		break;
 	case 8:
-		cout << "Square, 20 x 20 ft. with a" << generateDungeonDoor() << "on one wall, a" << generateDungeonDoor() << "on another wall, a passage on a third wall, and a secret door on the fourth wall" << endl;
+		startingArea = "Square, 20 x 20 ft. with a" + generateDungeonDoor() + "on one wall, a" + generateDungeonDoor() + "on another wall, a passage on a third wall, and a secret door on the fourth wall \n";
 		break;
 	case 9:
-		cout << "Passage, 10 ft. wide in a T intersection" << endl;
+		startingArea = "Passage, 10 ft. wide in a T intersection \n";
 		break;
 	case 10:
-		cout << "Passage, 10 ft. wide in a four way intersection" << endl;
+		startingArea = "Passage, 10 ft. wide in a four way intersection \n";
 		break;
 	}
+	return startingArea;
 }
 
-void generateDungeonChamber()
+string generateDungeonChamber()
 {
+	string chamber;
 	int exitsNormal;
 	int exitsLarge;
 	int chamberRoll = rollDice(1, 20);
@@ -93,245 +96,198 @@ void generateDungeonChamber()
 	case 1:
 	case 2:
 		exitsNormal = chamberExitsNormal();
-		cout << "Square 20 x 20 ft. \n";
-		cout << "with " << exitsNormal;
+		chamber = "Square 20 x 20 ft. \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) {chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 3:
 	case 4:
 		exitsNormal = chamberExitsNormal();
-		cout << "Square 30 x 30 ft. \n";
-		cout << "with " << exitsNormal;
+		chamber = "Square 30 x 30 ft. \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 5:
 	case 6:
 		exitsNormal = chamberExitsNormal();
-		cout << "Square 40 x 40 ft. \n";
-		cout << "with " << exitsNormal;
+		chamber = "Square 40 x 40 ft. \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 7:
 	case 8:
 	case 9:
 		exitsNormal = chamberExitsNormal();
-		cout << "Rectangle 20 x 30 ft. \n";
-		cout << "with " << exitsNormal;
+		chamber = "Rectangle 20 x 30 ft. \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 10:
 	case 11:
 	case 12:
 		exitsNormal = chamberExitsNormal();
-		cout << "Rectangle 30 x 40 ft. \n";
-		cout << "with " << exitsNormal;
+		chamber = "Rectangle 30 x 40 ft. \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 13:
 	case 14:
 		exitsLarge = chamberExitsLarge();
-		cout << "Rectangle 40 x 50 ft. \n";
-		cout << "with " << exitsLarge;
+		chamber = "Rectangle 40 x 50 ft. \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 15:
 		exitsLarge = chamberExitsLarge();
-		cout << "Rectangle 50 x 80 ft. \n";
-		cout << "with " << exitsLarge;
+		chamber = "Rectangle 50 x 80 ft. \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the "+ chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 16:
 		exitsNormal = chamberExitsNormal();
-		cout << "Circle 30 ft. diameter \n";
-		cout << "with " << exitsNormal;
+		chamber = "Circle 30 ft. diameter \n with " + exitsNormal;
 		if (exitsNormal == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsNormal == 0) { cout << " exits \n"; }
+		else if (exitsNormal == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsNormal - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsNormal - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 17:
 		exitsLarge = chamberExitsLarge();
-		cout << "Circle 50 ft. diameter \n";
-		cout << "with " << exitsLarge;
+		chamber = "Circle 50 ft. diameter \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the "; chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 18:
 		exitsLarge = chamberExitsLarge();
-		cout << "Octogon 40 x 40 ft. \n";
-		cout << "with " << exitsLarge;
+		chamber = "Octogon 40 x 40 ft. \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 19:
 		exitsLarge = chamberExitsLarge();
-		cout << "Octogon 60 x 60 ft. \n";
-		cout << "with " << exitsLarge;
+		chamber = "Octogon 60 x 60 ft. \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	case 20:
 		exitsLarge = chamberExitsLarge();
-		cout << "Trapezoid, Roughly 40 x 60 ft. \n";
-		cout << "with " << exitsLarge;
+		chamber = "Trapezoid, Roughly 40 x 60 ft. \n with " + exitsLarge;
 		if (exitsLarge == 1)
 		{
-			chamberExitType();
-			cout << "on the ";
-			chamberExitLocation();
+			chamber += chamberExitType() + "on the " + chamberExitLocation();
 		}
-		else if (exitsLarge == 0) { cout << " exits \n"; }
+		else if (exitsLarge == 0) { chamber += " exits \n"; }
 		else
 		{
-			cout << " exits, one"; chamberExitType();
-			cout << "on the "; chamberExitLocation();
-			for (int i = 0; i < exitsLarge - 2; i++) { cout << " one"; chamberExitType(); cout << "on the "; chamberExitLocation(); }
-			cout << " and one"; chamberExitType(); cout << "on the "; chamberExitLocation();
+			chamber += " exits, one" + chamberExitType() + "on the " + chamberExitLocation();
+			for (int i = 0; i < exitsLarge - 2; i++) { chamber += " one" + chamberExitType() + "on the " + chamberExitLocation(); }
+			chamber += " and one" + chamberExitType() + "on the " + chamberExitLocation();
 		}
 		break;
 	}
+	return chamber;
 }
 
 int chamberExitsNormal()
 {
-	int numberOfExits;
+	char numberOfExits;
 	int exitRoll = rollDice(1, 20);
 	switch (exitRoll)
 	{
@@ -413,8 +369,9 @@ int chamberExitsLarge()
 	return numberOfExits;
 }
 
-void chamberExitLocation()
+string chamberExitLocation()
 {
+	string exit;
 	int exitLocationRoll = rollDice(1, 20);
 	switch (exitLocationRoll)
 	{
@@ -425,32 +382,34 @@ void chamberExitLocation()
 	case 5:
 	case 6:
 	case 7:
-		cout << "wall opposite the entrance \n";
+		exit = "wall opposite the entrance \n";
 		break;
 	case 8:
 	case 9:
 	case 10:
 	case 11:
 	case 12:
-		cout << "wall left of the entrance \n";
+		exit =  "wall left of the entrance \n";
 		break;
 	case 13:
 	case 14:
 	case 15:
 	case 16:
 	case 17:
-		cout << "wall right of the entrance \n";
+		exit = "wall right of the entrance \n";
 		break;
 	case 18:
 	case 19:
 	case 20:
-		cout << "same wall as the entrance \n";
+		exit = "same wall as the entrance \n";
 		break;
 	}
+	return exit;
 }
 
-void chamberExitType()
+string chamberExitType()
 {
+	string exit;
 	int exitTypeRoll = rollDice(1, 20);
 	switch (exitTypeRoll)
 	{
@@ -464,7 +423,7 @@ void chamberExitType()
 	case 8:
 	case 9:
 	case 10:
-		cout << generateDungeonDoor();
+		exit = generateDungeonDoor();
 		break;
 	case 11:
 	case 12:
@@ -476,9 +435,10 @@ void chamberExitType()
 	case 18:
 	case 19:
 	case 20:
-		cout << " 10 ft. long corridor ";
+		exit = " 10 ft. long corridor ";
 		break;
 	}
+	return exit;
 }
 
 string generateDungeonDoor()
@@ -531,66 +491,67 @@ string generateDungeonDoor()
 	return doorType;
 }
 
-void generateDungeonPassage()
+string generateDungeonPassage()
 {
-	generatePassageWidth();
+	string passage;
 	int passageRoll = rollDice(1, 20);
 	switch (passageRoll)
 	{
 	case 1:
 	case 2:
-		cout << "continues straight 30 feet, with no doors or side passages." << endl;
+		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n";
 		break;
 	case 3:
-		cout << "continues straight 20 feet, with a" << generateDungeonDoor() <<  "to the right, then an additional 10 feet ahead." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() +  "to the right, then an additional 10 feet ahead. \n";
 		break;
 	case 4:
-		cout << "continues straight 20 feet, with a" << generateDungeonDoor() << "to the right, then an additional 10 feet ahead." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n";
 		break;
 	case 5:
-		cout << "continues straight 20 feet, passage ends in a" << generateDungeonDoor() << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n";
 		break;
 	case 6:
 	case 7:
-		cout << "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n";
 		break;
 	case 8:
 	case 9:
-		cout << "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n";
 		break;
 	case 10:
-		cout << "continues straight 20 feet, comes to a dead end." << secretDoor() << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n";
 		break;
 	case 11:
 	case 12:
-		cout << "continues straight 20 feet, then the passage turns left and continuess 10 feet." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n";
 		break;
 	case 13:
 	case 14:
-		cout << "continues straight 20 feet, then the passage turns right and continuess 10 feet." << endl;
+		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n";
 		break;
 	case 15:
 	case 16:
 	case 17:
 	case 18:
 	case 19:
-		cout << "Chamber (Roll on the Chamber Table)" << endl;
+		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n";
 		break;
 	case 20:
-		cout << "Stairs (Roll on the Stairs Table)" << endl;
+		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n";
 		break;
 	}
-
+	return passage;
 }
 
-void generatePassageWidth()
+string generatePassageWidth()
 {
+	string passageWidth;
 	int passageWidthRoll = rollDice(1, 20);
 	switch (passageWidthRoll)
 	{
 	case 1:
 	case 2:
-		cout << "A passage that is 5 feet wide, and ";
+		passageWidth = "A passage that is 5 feet wide, and ";
 		break;
 	case 3:
 	case 4:
@@ -602,41 +563,41 @@ void generatePassageWidth()
 	case 10:
 	case 11:
 	case 12:
-		cout << "A passage that is 10 feet wide, and ";
+		passageWidth = "A passage that is 10 feet wide, and ";
 		break;
 	case 13:
 	case 14:
-		cout << "A passage that is 20 feet wide, and ";
+		passageWidth = "A passage that is 20 feet wide, and ";
 		break;
 	case 15:
 	case 16:
-		cout << "A passage that is 30 feet wide, and ";
+		passageWidth = "A passage that is 30 feet wide, and ";
 		break;
 	case 17:
-		cout << "A passage that is 40 feet wide with a row of pillars down the middle, and ";
+		passageWidth = "A passage that is 40 feet wide with a row of pillars down the middle, and ";
 		break;
 	case 18:
-		cout << "A passage that is 40 feet wide with a double row of pillars, and ";
+		passageWidth = "A passage that is 40 feet wide with a double row of pillars, and ";
 		break;
 	case 19:
-		cout << "A passage that is 40 feet wide, 20 feet high, and ";
+		passageWidth = "A passage that is 40 feet wide, 20 feet high, and ";
 		break;
 	case 20:
-		cout << "A passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
+		passageWidth = "A passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
 		break;
 	}
+	return passageWidth;
 }
 
-void generateDoorContents()
+string generateDoorContents()
 {
+	string doorContents;
 	int doorContentsRoll = rollDice(1, 20);
 	switch (doorContentsRoll)
 	{
 	case 1:
 	case 2:
-		generatePassageWidth();
-		cout << "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
-		
+		doorContents = generatePassageWidth() + "extends 10 ft., ending in a T intersection extending 10 ft. to the right and left. \n";
 		break;
 	case 3:
 	case 4:
@@ -644,8 +605,7 @@ void generateDoorContents()
 	case 6:
 	case 7:
 	case 8:
-		generatePassageWidth();
-		cout << "extends 20 ft. straight ahead. \n";
+		doorContents = generatePassageWidth() + "extends 20 ft. straight ahead. \n";
 		break;
 	case 9:
 	case 10:
@@ -657,19 +617,21 @@ void generateDoorContents()
 	case 16:
 	case 17:
 	case 18:
-		cout << "Chamber (Roll on the chamber table) \n";
+		doorContents = "Chamber (Roll on the chamber table) \n";
 		break;
 	case 19:
-		cout << "Stairs (Roll on the Stairs table) \n";
+		doorContents = "Stairs (Roll on the Stairs table) \n";
 		break;
 	case 20:
-		cout << "False door with trap \n";
+		doorContents = "False door with trap \n";
 		break;
 	}
+	return doorContents;
 }
 
-void generateStairs()
+string generateStairs()
 {
+	string stairs;
 	int stairRoll = rollDice(1, 20);
 	switch (stairRoll)
 	{
@@ -677,52 +639,52 @@ void generateStairs()
 	case 2:
 	case 3:
 	case 4:
-		cout << "Down one level to a chamber \n";
+		stairs = "Down one level to a chamber \n";
 		break;
 	case 5:
 	case 6:
 	case 7:
 	case 8:
-		cout << "Down one level to a passage 20 ft. long \n";
+		stairs = "Down one level to a passage 20 ft. long \n";
 		break;
 	case 9:
-		cout << "Down two levels to a chamber \n";
+		stairs = "Down two levels to a chamber \n";
 		break;
 	case 10:
-		cout << "Down two level two a passage 20 ft. long \n";
+		stairs = "Down two level two a passage 20 ft. long \n";
 		break;
 	case 11:
-		cout << "Down three levels to a chamber \n";
+		stairs = "Down three levels to a chamber \n";
 		break;
 	case 12:
-		cout << "Down three level to a passage 20 ft. long \n";
+		stairs = "Down three level to a passage 20 ft. long \n";
 		break;
 	case 13:
-		cout << "Up one level to a chamber \n";
+		stairs = "Up one level to a chamber \n";
 		break;
 	case 14:
-		cout << "Up one level to a passage 20 ft. long \n";
+		stairs = "Up one level to a passage 20 ft. long \n";
 		break;
 	case 15:
-		cout << "Up one level to a dead end \n";
+		stairs = "Up one level to a dead end \n";
 		break;
 	case 16:
-		cout << "Down one level to a dead end \n";
+		stairs = "Down one level to a dead end \n";
 		break;
 	case 17:
-		cout << "Chimmney up one level to a passage 20 ft. long \n";
+		stairs = "Chimmney up one level to a passage 20 ft. long \n";
 		break;
 	case 18:
-		cout << "Chimmney up two levels to a passage 20 ft. long \n";
+		stairs = "Chimmney up two levels to a passage 20 ft. long \n";
 		break;
 	case 19:
-		cout << "Shaft (with or without elevator) down one level to a chamber \n";
+		stairs = "Shaft (with or without elevator) down one level to a chamber \n";
 		break;
 	case 20:
-		cout << "Shaft (with or without elevator) up one level to a chamber \n";
+		stairs = "Shaft (with or without elevator) up one level to a chamber \n";
 		break;
 	}
-
+	return stairs;
 }
 
 string secretDoor()
@@ -766,15 +728,15 @@ int main()
 		}
 		switch (input)
 		{
-		case '1': generateStartingArea();
+		case '1': cout << generateStartingArea();
 			break;
-		case '2': generateDungeonChamber();
+		case '2': cout << generateDungeonChamber();
 			break;
-		case '3': generateDungeonPassage();
+		case '3': cout << generateDungeonPassage();
 			break;
-		case '4': generateDoorContents();
+		case '4': cout << generateDoorContents();
 			break;
-		case '5': generateStairs();
+		case '5': cout << generateStairs();
 			break;
 		case '6':
 			break;
