@@ -16,6 +16,7 @@
 #include <string>
 #include <array>
 #include "Door.cpp"
+#include "Passage.cpp"
 
 using namespace std;
 
@@ -227,45 +228,45 @@ string generateDungeonChamber()
 
 string generateDungeonPassage()
 {
-	string passage;
+	Passage newPassage;
 	int passageRoll = rollDice(1, 20);
 	switch (passageRoll)
 	{
 	case 1: case 2:
-		passage = generatePassageWidth() + "continues straight 30 feet, with no doors or side passages. \n\n";
+		newPassage = Passage();
 		break;
 	case 3:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ",  "with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n\n");
 		break;
 	case 4:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead \n\n");
 		break;
 	case 5:
-		passage = generatePassageWidth() + "continues straight 20 feet, passage ends in a" + generateDungeonDoor() + "\n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "passage ends in a" + generateDungeonDoor() + "\n\n");
 		break;
 	case 6: case 7:
-		passage = generatePassageWidth() + "continues straight 20 feet, with a side passage to the right then an additional 10 feet ahead. \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "with a side passage to the right then an additional 10 feet ahead. \n\n");
 		break;
 	case 8: case 9:
-		passage = generatePassageWidth() + "continues straight 20 feet, side passage to the left, then an additional 10 feet ahead. \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "side passage to the left, then an additional 10 feet ahead. \n\n");
 		break;
 	case 10:
-		passage = generatePassageWidth() + "continues straight 20 feet, comes to a dead end." + secretDoor() + "\n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "and comes to a dead end." + secretDoor() + "\n\n");
 		break;
 	case 11: case 12:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns left and continuess 10 feet. \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ",  "then the passage turns left and continuess 10 feet. \n\n");
 		break;
 	case 13: case 14:
-		passage = generatePassageWidth() + "continues straight 20 feet, then the passage turns right and continuess 10 feet. \n\n";
+		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ", "then the passage turns right and continuess 10 feet. \n\n");
 		break;
 	case 15: case 16: case 17: case 18: case 19:
-		passage = generatePassageWidth() + "Chamber (Roll on the Chamber Table) \n\n";
+		newPassage = Passage("", "", "\n\tChamber (Roll on the Chamber Table) \n\n");
 		break;
 	case 20:
-		passage = generatePassageWidth() + "Stairs (Roll on the Stairs Table) \n\n";
+		newPassage = Passage("", "", "\n\tStairs (Roll on the Stairs Table) \n\n");
 		break;
 	}
-	return passage;
+	return newPassage.toString();
 }
 
 string generateDoorContents()
@@ -466,7 +467,7 @@ string generatePassageWidth()
 		passageWidth = "\n\tA passage that is 40 feet wide, 20 feet high, and ";
 		break;
 	case 20:
-		passageWidth = "\n\tA passage that is 40 feet, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
+		passageWidth = "\n\tA passage that is 40 feet wide, 20 feet high, and has a gallery 10 feet above the floor allowing access to the level above. It then ";
 		break;
 	}
 	return passageWidth;

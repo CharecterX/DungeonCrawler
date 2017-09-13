@@ -1,4 +1,6 @@
 #include <string>
+#include <random>
+#include <ctime>
 
 using namespace std;
 
@@ -7,16 +9,15 @@ class Passage
 private: 
 	string width;
 	string length;
-	bool hasDoor;
-	bool hasSidePassage;
-	bool hasTurn;
+	string description;
 	
 
 public:
-	Passage(string width = "10 ft. ", string length = "40 ft.")
+	Passage(string width = "\n\tA passage that is 5 feet wide, and ", string length = "continues straight 30 feet, ", string description = "with no doors or side passages. \n\n")
 	{
 		setWidth(width);
 		setLength(length);
+		setDescription(description);
 	}
 
 	void setWidth(string widthSize)
@@ -29,6 +30,11 @@ public:
 		length = lengthSize;
 	}
 
+	void setDescription(string passageDescrition)
+	{
+		description = passageDescrition;
+	}
+
 	string getWidth()
 	{
 		return width;
@@ -38,10 +44,15 @@ public:
 	{
 		return length;
 	}
+
+	string getDescription()
+	{
+		return description;
+	}
 	
 	string toString()
 	{
-		
+		return getWidth() + getLength() + getDescription();
 	}
 
 	
