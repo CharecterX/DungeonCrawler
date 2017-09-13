@@ -233,7 +233,7 @@ string generateDungeonPassage()
 	switch (passageRoll)
 	{
 	case 1: case 2:
-		newPassage = Passage();
+		newPassage = Passage(generatePassageWidth());
 		break;
 	case 3:
 		newPassage = Passage(generatePassageWidth(), "continues straight 20 feet, ",  "with a" + generateDungeonDoor() + "to the right, then an additional 10 feet ahead. \n\n");

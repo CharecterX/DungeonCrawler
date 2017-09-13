@@ -13,7 +13,7 @@ private:
 	
 
 public:
-	Passage(string width = "\n\tA passage that is 5 feet wide, and ", string length = "continues straight 30 feet, ", string description = "with no doors or side passages. \n\n")
+	Passage(string width = "", string length = "continues straight 30 feet, ", string description = "with no doors or side passages. \n\n")
 	{
 		setWidth(width);
 		setLength(length);

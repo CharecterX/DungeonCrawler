@@ -1,4 +1,6 @@
-﻿  Main.cpp
-c:\users\crnor\onedrive\documents\github\dungeoncrawler\dcvsfolder\dcvsfolder\main.cpp(115): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  Passage.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Main.cpp
   DCVSFolder.vcxproj -> C:\Users\crnor\OneDrive\Documents\GitHub\DungeonCrawler\DCVSFolder\Debug\DCVSFolder.exe
   DCVSFolder.vcxproj -> C:\Users\crnor\OneDrive\Documents\GitHub\DungeonCrawler\DCVSFolder\Debug\DCVSFolder.pdb (Partial PDB)
