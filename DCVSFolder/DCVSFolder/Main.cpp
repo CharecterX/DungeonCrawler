@@ -138,7 +138,7 @@ string generateStartingArea()
 		startingArea = "\n\tSquare, 40 x 40ft. with a" + generateDungeonDoor() + "on a wall, a" + generateDungeonDoor() + "on another wall, and a" + generateDungeonDoor() + "on a third wall \n\n";
 		break;
 	case 4:
-		startingArea = "\n\tRectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" + generateDungeonDoor() + "on one short wall and a" + generateDungeonDoor() + "one the other \n\n";
+		startingArea = "\n\tRectangle, 80 x 20 ft. with a row of pillars down the middle, two passages leading from each long wall, a" + generateDungeonDoor() + "on one short wall and a" + generateDungeonDoor() + "on the other \n\n";
 		break;
 	case 5:
 		startingArea = "\n\tRectangle, 20 x 40 ft. with a passage on each wall \n\n";
